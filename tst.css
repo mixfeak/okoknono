@@ -1,15 +1,3 @@
-/*
- ARGON AURORA / Custom CSS v2
- Diseñado para AdminLTE 3 + Bootstrap 4.
- Basado en selectores probados por el propietario:
- div.content-wrapper, div.card, div.card.card-default, div.info-box,
- .table td, input.form-control, button, select.form-control.
-
- Este archivo debe servirse públicamente mediante HTTPS (Content-Type: text/css).
- No incluir claves API ni datos privados. CSS no crea enlaces clicables.
- Cambiar ayuda.tudominio.com (banner de texto) antes de subir.
-*/
-
 :root {
   --au-ink: #1b1734;
   --au-muted: #625e82;
@@ -119,7 +107,7 @@ div.content-wrapper .content-header .m-0 {
 div.content-header { padding-top: 24px !important; padding-bottom: 8px !important; }
 /* Aviso puramente informativo. No es un enlace clicable. */
 div.content-header > div.container-fluid::after {
-  content: 'GUÍAS + SOPORTE  /  ayuda.tudominio.com';
+  content: 'CENTRO DE AYUDA  /  SOLICITUDES Y SOPORTE';
   display: block; width: fit-content; max-width: 100%;
   box-sizing: border-box; overflow-wrap: anywhere;
   padding: 9px 15px; margin-top: 13px; margin-bottom: 11px;
@@ -337,4 +325,362 @@ div.content-wrapper .table-responsive::-webkit-scrollbar-thumb { background: rgb
     -webkit-backdrop-filter: blur(10px) saturate(120%) !important;
   }
   footer.main-footer { padding: 14px !important; font-size: 11px; }
+}
+
+
+/* ===================================================================
+   ARGON / SIGNAL DESK — OVERRIDES v3 (sobre Argon Aurora v2)
+   - Navegación lateral completamente rediseñada
+   - Unifica apariencia en modo claro y oscuro
+   - Oculta SOLO la opción /toggle-theme (sin cambiar su destino)
+   - Tarjeta de soporte INFORMATIVA. CSS no crea enlaces reales.
+   - Compatible con el sidebar responsive de AdminLTE 3
+   =================================================================== */
+
+:root {
+  --sd-night: #0b101a;
+  --sd-surface: #151c28;
+  --sd-mint: #d9f87c;
+  --sd-fog: #a7b2c3;
+  --sd-hairline: rgba(211,226,240,.10);
+  --sd-width: 282px;
+}
+
+/* Identidad visual consistente aun si el servidor cambia light/dark */
+body,
+body.dark-mode,
+body:not(.dark-mode) {
+  background-color: #0d1220 !important;
+  font-family: 'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+body .content-wrapper,
+body.dark-mode .content-wrapper,
+body:not(.dark-mode) .content-wrapper {
+  color: #201a3d !important;
+  background-color: #14162e !important;
+  background-image:
+    radial-gradient(ellipse 68% 55% at 95% 5%, rgba(19,207,218,.54), transparent 75%),
+    radial-gradient(ellipse 58% 65% at 4% 9%, rgba(220,58,165,.45), transparent 75%),
+    linear-gradient(135deg,#4b2a7f 0%,#2b275e 49%,#096173 100%) !important;
+}
+body .main-header.navbar,
+body.dark-mode .main-header.navbar,
+body .main-header.navbar-light,
+body .main-header.navbar-dark {
+  background: #111925 !important;
+  color: #edf7fa !important;
+  border-bottom: 1px solid var(--sd-hairline) !important;
+  box-shadow: none !important;
+}
+body .main-header.navbar .nav-link,
+body .main-header.navbar .nav-link i { color: #e5eff4 !important; }
+body .main-header.navbar .nav-link:hover { background: rgba(217,248,124,.10) !important; color: var(--sd-mint) !important; }
+
+/* SIDEBAR: apariencia nueva, independiente de sidebar-dark/light-* */
+html body aside.main-sidebar,
+html body aside.main-sidebar.sidebar-dark-primary,
+html body aside.main-sidebar.sidebar-light-primary {
+  width: var(--sd-width) !important;
+  background: #0b101a !important;
+  background-image:
+    radial-gradient(ellipse 190px 160px at 3% 3%, rgba(171,228,163,.075), transparent 80%),
+    linear-gradient(172deg,#111b26 0%,#0b101a 47%,#111420 100%) !important;
+  border-right: 1px solid rgba(217,248,124,.12) !important;
+  box-shadow: 12px 0 35px rgba(7,10,18,.24) !important;
+  color: #dce7ef !important;
+}
+/* Nuevo encabezado de marca: compacto y reconocible */
+html body aside.main-sidebar a.brand-link {
+  padding: 21px 19px 17px !important;
+  min-height: 109px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 9px !important;
+  background: #101926 !important;
+  border-bottom: 1px solid var(--sd-hairline) !important;
+  text-decoration: none !important;
+  box-shadow: inset 3px 0 0 var(--sd-mint) !important;
+}
+html body aside.main-sidebar a.brand-link .brand-image {
+  float: none !important;
+  display: block !important;
+  width: auto !important;
+  max-width: 195px !important;
+  max-height: 42px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  filter: saturate(.80) contrast(1.07);
+  opacity: .98 !important;
+}
+html body aside.main-sidebar a.brand-link::after {
+  content: 'SIGNAL DESK  /  RESELLER';
+  display: block;
+  color: #b1c5c6;
+  font-size: 9px;
+  letter-spacing: .23em;
+  font-weight: 800;
+  line-height: 1.5;
+}
+/* Contenedor y scrollbar */
+html body aside.main-sidebar .sidebar {
+  padding: 4px 13px 30px !important;
+  overflow-x: hidden !important;
+}
+html body aside.main-sidebar .sidebar::-webkit-scrollbar { width: 4px; }
+html body aside.main-sidebar .sidebar::-webkit-scrollbar-thumb { background: rgba(217,248,124,.21); border-radius: 10px; }
+
+/* Cuenta: pasa de la caja AdminLTE a un módulo horizontal reducido */
+html body aside.main-sidebar div.user-panel,
+html body aside.main-sidebar div.user-panel.d-flex {
+  display: grid !important;
+  grid-template-columns: 37px minmax(0,1fr) !important;
+  gap: 0 10px !important;
+  align-items: start !important;
+  padding: 16px 9px 15px !important;
+  margin: 11px 0 8px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--sd-hairline) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .user-panel .image { padding: 0 !important; margin-top: 2px !important; }
+html body aside.main-sidebar .user-panel .image img {
+  width: 35px !important; height: 35px !important;
+  object-fit: cover !important;
+  border: 1px solid rgba(217,248,124,.6) !important;
+  padding: 3px;
+  background: #1d2a2c !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .user-panel .info {
+  display: block !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .user-panel .info > a.d-block {
+  color: #f3f8f9 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1.45 !important;
+  margin-bottom: 5px !important;
+  text-decoration: none !important;
+  overflow-wrap: anywhere !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block {
+  color: #acb8c6 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type {
+  color: var(--sd-mint) !important;
+  font-size: 12px !important;
+  letter-spacing: .01em;
+}
+/* El bank balance deja de ocupar espacio visual; su dato no se borra del HTML */
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type .nav-icon { display: none !important; }
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type::after {
+  content: 'Solicitudes y asistencia';
+  display: block !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  color: #c3cfda !important;
+  margin-top: 3px;
+}
+html body aside.main-sidebar .user-panel a.btn-danger.btn-xs {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 100px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #202b37 !important;
+  color: #dbe7e5 !important;
+  border: 1px solid #34414d !important;
+  border-radius: 8px !important;
+  margin-top: 10px !important;
+  padding: 6px 12px !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+html body aside.main-sidebar .user-panel a.btn-danger.btn-xs:hover { background: #303d49 !important; }
+
+/* MENÚ: navegación editorial, iconografía en cuadrados, sin pastillas AdminLTE */
+html body aside.main-sidebar .nav-sidebar,
+html body aside.main-sidebar .nav-sidebar > .nav-item { width: 100%; }
+html body aside.main-sidebar .nav-sidebar > .nav-header {
+  color: #728495 !important;
+  padding: 20px 11px 6px !important;
+  margin: 0 !important;
+  font-size: 9px !important;
+  letter-spacing: .24em !important;
+  font-weight: 850 !important;
+  line-height: 1.3 !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 48px !important;
+  background: transparent !important;
+  color: #c2cbd8 !important;
+  border: 1px solid transparent !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  padding: 7px 9px !important;
+  box-shadow: none !important;
+  transition: background-color .16s ease, color .16s ease, border-color .16s ease;
+  white-space: normal;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link .nav-icon {
+  display: inline-grid !important;
+  place-items: center !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  margin: 0 12px 0 0 !important;
+  color: #d2dfdb !important;
+  background: #202d36 !important;
+  border-radius: 7px !important;
+  font-size: 15px !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link p {
+  color: inherit !important;
+  display: block !important;
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-weight: 630 !important;
+  letter-spacing: -.012em !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link:hover,
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link:focus-visible {
+  color: #f7fff4 !important;
+  background: #1d2d31 !important;
+  border-left-color: #7cb2a7 !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link.active {
+  color: #f3ffdc !important;
+  background: #28352b !important;
+  border-left-color: var(--sd-mint) !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link.active .nav-icon {
+  color: #14201b !important;
+  background: var(--sd-mint) !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link:hover .nav-icon { background: #3a5553 !important; color: #fff !important; }
+html body aside.main-sidebar .nav-sidebar .nav-link:focus-visible {
+  outline: 2px solid var(--sd-mint) !important;
+  outline-offset: -2px !important;
+}
+
+/* DESACTIVAR VISUALMENTE opción de tema, SIN falsificar su acción */
+html body aside.main-sidebar a.nav-link[href$='/toggle-theme'],
+html body aside.main-sidebar a.nav-link[href*='/toggle-theme?'] { display: none !important; }
+@supports selector(li:has(> a)) {
+  html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a.nav-link[href$='/toggle-theme']),
+  html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a.nav-link[href*='/toggle-theme?']) { display: none !important; }
+}
+/* Sustituto HONESTO: módulo informativo, no botón y no enlace ficticio */
+html body aside.main-sidebar .sidebar > nav::after {
+  content: 'SOLICITUDES / SOPORTE\A\A Para créditos, cambios y consultas, contacta con tu distribuidor.';
+  display: block !important;
+  margin: 23px 4px 8px !important;
+  padding: 16px 14px 17px !important;
+  background:
+    linear-gradient(130deg,rgba(217,248,124,.085),rgba(217,248,124,.018));
+  border: 1px solid rgba(217,248,124,.22) !important;
+  border-radius: 11px !important;
+  color: #c8d3d9 !important;
+  font-size: 11px !important;
+  line-height: 1.65 !important;
+  font-weight: 550 !important;
+  letter-spacing: .005em !important;
+  white-space: pre-line !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+/* Consistencia con layout/sidebar colapsado y cabecera fija AdminLTE */
+@media (min-width: 992px) {
+  body:not(.sidebar-collapse) .main-header,
+  body:not(.sidebar-collapse) .content-wrapper,
+  body:not(.sidebar-collapse) .main-footer { margin-left: var(--sd-width) !important; }
+  body.sidebar-mini.sidebar-collapse .main-header,
+  body.sidebar-mini.sidebar-collapse .content-wrapper,
+  body.sidebar-mini.sidebar-collapse .main-footer { margin-left: 4.6rem !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) {
+    width: 4.6rem !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .brand-link::after,
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .sidebar > nav::after { display: none !important; }
+}
+/* Móvil: panel como cajón independiente y toque fácil sin alterar pushmenu */
+@media (max-width: 991.98px) {
+  html body aside.main-sidebar {
+    width: min(84vw, 310px) !important;
+    max-width: calc(100vw - 42px) !important;
+  }
+  body:not(.sidebar-open) aside.main-sidebar { transform: translateX(-110%) !important; }
+  body.sidebar-open aside.main-sidebar { transform: translateX(0) !important; }
+  html body .main-header,
+  html body .content-wrapper,
+  html body .main-footer { margin-left: 0 !important; }
+  html body aside.main-sidebar a.brand-link { min-height: 92px !important; padding: 16px !important; }
+  html body aside.main-sidebar a.brand-link .brand-image { max-width: 178px !important; max-height: 38px !important; }
+  html body aside.main-sidebar .sidebar { padding: 3px 12px 24px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link { min-height: 48px !important; }
+}
+@media (max-width: 420px) {
+  html body aside.main-sidebar .user-panel .info > a.d-block { font-size: 12px !important; }
+  html body aside.main-sidebar .nav-sidebar > .nav-header { padding-top: 14px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link { min-height: 45px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body aside.main-sidebar .nav-sidebar .nav-item > .nav-link { transition: none !important; }
+}
+/* AdminLTE sidebar-mini: mantener modo compacto realmente compacto */
+@media (min-width: 992px) {
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) a.brand-link {
+    min-height: 71px !important;
+    align-items: center !important;
+    padding: 15px 8px !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) a.brand-link .brand-image {
+    max-width: 42px !important;
+    max-height: 35px !important;
+    object-fit: contain !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) div.user-panel,
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar > .nav-header {
+    display: none !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > .nav-link {
+    padding: 7px !important;
+    justify-content: center !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > .nav-link p {
+    display: none !important;
+  }
+  body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > .nav-link .nav-icon {
+    margin: 0 !important;
+  }
 }
