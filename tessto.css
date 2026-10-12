@@ -1340,3 +1340,140 @@ html body .content-wrapper .table td:last-child:not(:has(.btn)) {
     width: auto !important;
   }
 }
+
+
+/* ======================================================================
+   ARGON ATLAS v9 — DESKTOP / DNS CORRECTION
+   Additive overrides over v8. Original application functionality retained.
+   /custom-dns: hides the optional CUSTOM DOMAIN form, not SUBDOMAIN.
+   No API credentials / no JavaScript.
+   ====================================================================== */
+
+/* 1. OPTIONAL CUSTOM DOMAIN: selector is keyed to its actual input attributes,
+      never to the entire DNS panel. The /custom-dns route itself isn't
+      exposed as a CSS selector, so this will affect matching forms anywhere. */
+@supports selector(form:has(input)) {
+  /* A separate form holding the custom-domain field (likely HTML structure).
+     Do not hide a joint form that also includes a subdomain input. */
+  html body .content-wrapper form:has(input[placeholder*="custom domain" i]):not(:has(input[name*="subdomain" i],input[id*="subdomain" i])),
+  html body .content-wrapper form:has(input[name="custom_domain" i]):not(:has(input[name*="subdomain" i],input[id*="subdomain" i])),
+  html body .content-wrapper form:has(input[id*="custom-domain" i]):not(:has(input[name*="subdomain" i],input[id*="subdomain" i])) {
+    display: none !important;
+  }
+  /* Other common layouts where custom-domain is in a distinct wrapper. */
+  html body .content-wrapper .card-body > :is(div,section,fieldset):has(input[placeholder*="custom domain" i]):not(:has(input[name*="subdomain" i],input[id*="subdomain" i])),
+  html body .content-wrapper .card-body > :is(div,section,fieldset):has(input[name="custom_domain" i]):not(:has(input[name*="subdomain" i],input[id*="subdomain" i])) {
+    display: none !important;
+  }
+  /* If the custom-domain field lives in a separate immediate form group. */
+  html body .content-wrapper .form-group:has(input[placeholder*="custom domain" i]),
+  html body .content-wrapper .form-group:has(input[name="custom_domain" i]),
+  html body .content-wrapper .form-group:has(input[id*="custom-domain" i]) {
+    display: none !important;
+  }
+}
+
+/* Keep the Subdomain + suffix selector on one line at EVERY viewport.
+   v8's generic form-control width can otherwise make it break on desktop. */
+html body .content-wrapper .input-group:has(> input.form-control):has(> .input-group-append) {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+html body .content-wrapper .input-group:has(> input.form-control) > input.form-control {
+  flex: 1 1 auto !important;
+  width: 1% !important;
+  min-width: 0 !important;
+}
+html body .content-wrapper .input-group:has(> input.form-control) > .input-group-append {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  max-width: 48% !important;
+  min-width: 0 !important;
+}
+html body .content-wrapper .input-group:has(> input.form-control) > .input-group-append > select.form-control {
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+/* 2. FIX TOO-SMALL DESKTOP UI. Keep mobile density under its own breakpoint.
+      Existing v8 global compact styles shrank controls on ALL viewports. */
+@media (min-width: 992px) {
+  html body .content-wrapper .container-fluid {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content {
+    padding-left: clamp(20px,2.3vw,40px) !important;
+    padding-right: clamp(20px,2.3vw,40px) !important;
+  }
+  html body .content-wrapper > .content-header { padding-top: 28px !important; }
+  html body .content-wrapper .card {
+    width: auto !important;
+    max-width: none !important;
+  }
+  html body .content-wrapper > section.content .row > [class*="col-"] {
+    min-width: 0 !important;
+  }
+  html body .content-wrapper div.card > div.card-header {
+    padding: 20px 24px !important;
+  }
+  html body .content-wrapper div.card > div.card-body {
+    padding: 22px 24px !important;
+  }
+  html body .content-wrapper div.card div.card > div.card-body,
+  html body .content-wrapper div.card div.card div.card-body {
+    padding: 20px 22px !important;
+  }
+  html body .content-wrapper .card .card-title {
+    font-size: 21px !important;
+    line-height: 1.35 !important;
+  }
+  html body .content-wrapper :is(a.btn,button.btn,input.btn,.btn) {
+    min-height: 39px !important;
+    font-size: 14px !important;
+    padding: 9px 15px !important;
+    line-height: 1.35 !important;
+    border-radius: 10px !important;
+  }
+  html body .content-wrapper .btn.btn-sm { min-height: 34px !important; font-size: 13px !important; padding: 7px 11px !important; }
+  html body .content-wrapper .btn.btn-xs { min-height: 30px !important; font-size: 12px !important; padding: 5px 9px !important; }
+  html body .content-wrapper .table th,
+  html body .content-wrapper .table td {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    padding: 13px 14px !important;
+  }
+  html body .content-wrapper .table th { font-size: 12px !important; }
+  html body .content-wrapper :is(input.form-control,select.form-control,textarea.form-control,.custom-select) {
+    font-size: 15px !important;
+    padding: 10px 12px !important;
+    min-height: 42px !important;
+  }
+  html body .content-wrapper label { font-size: 14px !important; margin-bottom: 7px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link p { font-size: 12px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item:first-child > a.nav-link p { font-size: 14px !important; }
+  html body aside.main-sidebar .nav-sidebar > li.nav-header { font-size: 10px !important; }
+  /* Buttons/inputs on desktop should not become full-width accidentally. */
+  html body .content-wrapper .card-header .card-tools {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  html body .content-wrapper .card-header :is(input.form-control.float-right,select.form-control.float-left) {
+    width: min(100%,270px) !important;
+  }
+}
+
+/* 3. TABLET: more generous than mobile while staying within screen. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html body .content-wrapper .container-fluid { max-width: none !important; width: 100% !important; }
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 18px !important; padding-right: 18px !important; }
+  html body .content-wrapper .card .card-title { font-size: 19px !important; }
+  html body .content-wrapper .table td,
+  html body .content-wrapper .table th { font-size: 13px !important; padding: 10px 12px !important; }
+  html body .content-wrapper :is(a.btn,button.btn,input.btn,.btn) { font-size: 13px !important; padding: 8px 12px !important; }
+}
