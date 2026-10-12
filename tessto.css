@@ -1477,3 +1477,176 @@ html body .content-wrapper .input-group:has(> input.form-control) > .input-group
   html body .content-wrapper .table th { font-size: 13px !important; padding: 10px 12px !important; }
   html body .content-wrapper :is(a.btn,button.btn,input.btn,.btn) { font-size: 13px !important; padding: 8px 12px !important; }
 }
+
+/* ====================================================================
+   ARGON ATLAS v10 — REPARACION DE ESTRUCTURA (2026-10-12)
+   Anadir DESPUES de v9 o usar el tst.css completo v10.
+   1. Los datos de cuenta son una franja FIJA dentro del lateral.
+   2. Solo el NAV desplaza; el perfil no puede desaparecer al hacer scroll.
+   3. En escritorio las tarjetas principales ocupan el ancho disponible.
+   ==================================================================== */
+
+/* A. ESTRUCTURA DEL LATERAL. No usar height:0 + sticky en el perfil. */
+html body aside.main-sidebar > .sidebar {
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: calc(100vh - 70px) !important;
+  max-height: calc(100dvh - 70px) !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  padding: 0 11px 0 !important;
+  margin: 0 !important;
+}
+/* Antes el perfil compartia el scroll del menu. Ya no. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  display: block !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  flex: 0 0 auto !important;
+  order: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 10px 0 7px !important;
+  padding: 12px !important;
+  overflow: visible !important;
+  z-index: 2 !important;
+  background: #202b39 !important;
+  border: 1px solid rgba(194,213,228,.19) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > a.d-block:first-of-type {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  min-height: 20px !important;
+  height: auto !important;
+  padding-left: 45px !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:first-of-type {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  height: auto !important;
+  min-height: 18px !important;
+  padding-left: 45px !important;
+  color: #c5f36d !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  font-weight: 750 !important;
+}
+/* Fila bancaria reutilizada como mensaje no interactivo. */
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:last-of-type {
+  display: block !important;
+  position: static !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 10px 11px !important;
+  margin-top: 5px !important;
+}
+/* Scroll exclusivo de opciones del menu, con espacio inferior para Delete Expired. */
+html body aside.main-sidebar > .sidebar > nav.mt-2,
+html body aside.main-sidebar > .sidebar > nav,
+html body aside.main-sidebar > .sidebar .os-content > nav.mt-2,
+html body aside.main-sidebar > .sidebar .os-content > nav {
+  display: block !important;
+  flex: 1 1 0% !important;
+  order: 1 !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 0 !important;
+  padding: 2px 0 calc(28px + env(safe-area-inset-bottom, 0px)) !important;
+  scrollbar-width: thin;
+}
+/* El plugin OverlayScrollbars anade tres envoltorios entre .sidebar y nav. */
+html body aside.main-sidebar > .sidebar.os-host { display: block !important; padding: 0 !important; }
+html body aside.main-sidebar > .sidebar.os-host > .os-padding,
+html body aside.main-sidebar > .sidebar.os-host > .os-padding > .os-viewport {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html body aside.main-sidebar > .sidebar.os-host .os-content {
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 11px !important;
+}
+/* Sidebar comprimido de AdminLTE: no mostrar una tarjeta incompleta. */
+@media (min-width: 992px) {
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .user-panel { display: none !important; }
+}
+/* B. VISTA ESCRITORIO. La anchura de .container-fluid NO basta si una
+   columna Bootstrap .col-md-6 o .col-lg-6 limita la tarjeta a 50%. */
+@media (min-width: 992px) {
+  html body .content-wrapper > section.content,
+  html body .content-wrapper > section.content > .container-fluid {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*="col-"]:has(> .card) {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*="col-"] > .card,
+  html body .content-wrapper .card > .card-body > .card {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+  html body .content-wrapper .card-body > form,
+  html body .content-wrapper .card-body > .table-responsive {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  /* Los cuadros resumen mantienen las 4 columnas originales del dashboard. */
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*="col-"]:has(> .info-box) {
+    width: auto !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*="col-"]:has(> .card) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+/* Movil: no alterar las cards que ya encajan. */
+@media (max-width: 767.98px) {
+  html body aside.main-sidebar > .sidebar,
+  html body aside.main-sidebar > .sidebar.os-host .os-content { max-height: calc(100dvh - 70px) !important; }
+  html body aside.main-sidebar .sidebar .user-panel,
+  html body aside.main-sidebar .sidebar .user-panel.d-flex { padding: 10px !important; margin-top: 6px !important; }
+  html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:last-of-type { padding: 8px 10px !important; }
+}
