@@ -1,0 +1,786 @@
+:root {
+  --au-ink: #1b1734;
+  --au-muted: #625e82;
+  --au-violet: #7139e9;
+  --au-teal: #006c82;
+  --au-cyan: #22bacc;
+  --au-line: rgba(255,255,255,.56);
+  --au-glass: rgba(255,255,255,.76);
+  --au-shadow: 0 14px 42px rgba(22,19,66,.16);
+}
+
+/* 01 — LIENZO. Selector confirmado en tu CSS. */
+html, body { min-width: 0; }
+body.dark-mode, body:not(.dark-mode) {
+  font-family: 'Segoe UI', Inter, system-ui, -apple-system, sans-serif !important;
+  font-feature-settings: 'tnum' 1;
+}
+div.content-wrapper,
+body.dark-mode div.content-wrapper,
+body:not(.dark-mode) div.content-wrapper {
+  min-height: calc(100vh - 58px) !important;
+  background-color: #10122f !important;
+  background-image:
+    radial-gradient(ellipse 60% 54% at 85% 12%, rgba(0,222,231,.72), transparent 77%),
+    radial-gradient(ellipse 64% 75% at 12% 5%, rgba(219,47,171,.56), transparent 75%),
+    radial-gradient(ellipse 85% 70% at 50% 90%, rgba(88,52,205,.60), transparent 85%),
+    linear-gradient(126deg,#452374 0%,#272353 54%,#05566d 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--au-ink) !important;
+  padding-bottom: 48px !important;
+}
+/* Evita que el contenido quede pegado al borde */
+div.content-wrapper > div.content-header,
+div.content-wrapper > section.content { padding-left: 16px !important; padding-right: 16px !important; }
+div.content-wrapper .container-fluid { max-width: 1660px; }
+
+/* 02 — CABECERA Y NAVEGACIÓN: contraste real, sin cubrir botones */
+nav.main-header.navbar {
+  background: rgba(17,15,45,.96) !important;
+  border-bottom: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow: 0 8px 25px rgba(12,8,42,.16) !important;
+  min-height: 58px;
+}
+nav.main-header.navbar .nav-link { color: #edf0ff !important; border-radius: 10px; }
+nav.main-header.navbar .nav-link:hover { color: #88f8ff !important; background: rgba(255,255,255,.08) !important; }
+aside.main-sidebar.sidebar-dark-primary,
+aside.main-sidebar.sidebar-dark-primary::before {
+  background: #17152f !important;
+  border-right: 1px solid rgba(190,184,241,.12) !important;
+  box-shadow: 12px 0 30px rgba(13,8,37,.18) !important;
+}
+aside.main-sidebar a.brand-link {
+  border-bottom: 1px solid rgba(255,255,255,.09) !important;
+  background: #17152f !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+aside.main-sidebar .brand-image { max-height: 38px !important; width: auto !important; object-fit: contain; }
+aside.main-sidebar .sidebar { padding: 0 9px 24px; }
+aside.main-sidebar div.user-panel {
+  background: rgba(255,255,255,.055) !important;
+  border: 1px solid rgba(255,255,255,.11) !important;
+  border-radius: 15px !important;
+  padding: 13px 9px !important;
+  margin: 15px 2px 18px !important;
+}
+aside.main-sidebar .user-panel .info > a.d-block { color: #fff !important; font-weight: 700; white-space: normal; overflow-wrap: anywhere; }
+aside.main-sidebar .user-panel .info > span { color: #c1bedc !important; font-size: 12px; }
+aside.main-sidebar .user-panel .info > span:first-of-type { color: #90fbff !important; }
+aside.main-sidebar .nav-sidebar > .nav-header {
+  font-size: 10px !important; letter-spacing: .17em !important;
+  color: #9994c0 !important; font-weight: 800;
+  margin: 15px 9px 5px; padding: 8px 8px 3px;
+}
+aside.main-sidebar .nav-sidebar .nav-link {
+  color: #c8c5e0 !important;
+  border-radius: 11px !important;
+  margin-bottom: 2px;
+  padding: 11px 12px !important;
+  transition: background .16s ease, color .16s ease;
+}
+aside.main-sidebar .nav-sidebar .nav-link:hover {
+  background: rgba(122,100,255,.19) !important;
+  color: #fff !important;
+}
+aside.main-sidebar .nav-sidebar .nav-link.active {
+  background: linear-gradient(100deg,#6938d9,#186c98) !important;
+  color: #fff !important;
+  box-shadow: 0 5px 16px rgba(23,10,72,.24);
+}
+aside.main-sidebar .nav-sidebar .nav-icon { color: #aba4e6 !important; }
+aside.main-sidebar .nav-sidebar .nav-link.active .nav-icon,
+aside.main-sidebar .nav-sidebar .nav-link:hover .nav-icon { color: #fff !important; }
+aside.main-sidebar .user-panel a.btn-danger.btn-xs {
+  color: #eafcff !important; background: rgba(255,255,255,.10) !important;
+  border: 1px solid rgba(255,255,255,.16) !important; border-radius: 9px !important;
+  box-shadow: none !important;
+}
+
+/* 03 — CABECERA DEL DASHBOARD */
+div.content-header h1,
+div.content-wrapper .content-header .m-0 {
+  color: #fff !important; font-weight: 800 !important;
+  font-size: clamp(25px, 2.65vw, 38px) !important;
+  letter-spacing: -.045em; text-shadow: 0 3px 12px rgba(20,8,55,.18);
+}
+div.content-header { padding-top: 24px !important; padding-bottom: 8px !important; }
+/* Aviso puramente informativo. No es un enlace clicable. */
+div.content-header > div.container-fluid::after {
+  content: 'CENTRO DE AYUDA  /  SOLICITUDES Y SOPORTE';
+  display: block; width: fit-content; max-width: 100%;
+  box-sizing: border-box; overflow-wrap: anywhere;
+  padding: 9px 15px; margin-top: 13px; margin-bottom: 11px;
+  border-radius: 100px;
+  background: rgba(11,12,48,.45);
+  border: 1px solid rgba(255,255,255,.31);
+  color: #fff; font-weight: 750; font-size: 11px; letter-spacing: .09em;
+  backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+}
+
+/* 04 — KPI: selector del ejemplo que has comprobado */
+div.info-box,
+body.dark-mode div.info-box {
+  display: flex;
+  align-items: center;
+  min-height: 110px !important;
+  background: var(--au-glass) !important;
+  background-color: var(--au-glass) !important;
+  color: var(--au-ink) !important;
+  border-radius: 19px !important;
+  border: 1px solid var(--au-line) !important;
+  box-shadow: var(--au-shadow) !important;
+  backdrop-filter: blur(16px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(145%) !important;
+  overflow: hidden;
+  padding: 13px !important;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+@media (hover:hover) { div.info-box:hover { transform: translateY(-3px); box-shadow: 0 22px 44px rgba(25,16,70,.20) !important; } }
+div.info-box > span.info-box-icon {
+  height: 65px !important; width: 65px !important; min-width: 65px !important;
+  background: #ebe5fc !important; color: #653cda !important;
+  border-radius: 14px !important; box-shadow: none !important;
+  font-size: 25px !important;
+}
+div.info-box .info-box-icon.bg-danger { background: #ffe5eb !important; color: #b23060 !important; }
+div.info-box .info-box-icon.bg-warning { background: #fff0d3 !important; color: #ab690d !important; }
+div.info-box .info-box-icon.bg-info { background: #daf7fa !important; color: #087b88 !important; }
+div.info-box .info-box-icon i,div.info-box .info-box-icon span.iconify { color: inherit !important; }
+div.info-box .info-box-content { min-width: 0; padding-left: 14px !important; }
+div.info-box .info-box-text { color: #605a7c !important; font-size: 12px !important; font-weight: 700; white-space: normal !important; }
+div.info-box .info-box-number { color: #1b1734 !important; font-size: 30px !important; letter-spacing: -.05em; font-weight: 850 !important; line-height: 1.1; }
+
+/* 05 — CARDS. Especificidad igual/superior a tus selectores probados. */
+div.card,
+div.card.card-default,
+body.dark-mode div.card,
+body.dark-mode div.card.card-default {
+  background: rgba(255,255,255,.78) !important;
+  background-color: rgba(255,255,255,.78) !important;
+  color: var(--au-ink) !important;
+  border: 1px solid rgba(255,255,255,.68) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--au-shadow) !important;
+  backdrop-filter: blur(16px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(145%) !important;
+  overflow: hidden;
+}
+div.card > div.card-header,
+body.dark-mode div.card > div.card-header {
+  background: rgba(255,255,255,.20) !important;
+  border-bottom: 1px solid rgba(55,39,102,.12) !important;
+  border-radius: 0 !important;
+  padding: 17px 20px !important;
+  color: #211d42 !important;
+}
+div.card .card-title { color: #201b3d !important; font-weight: 800 !important; letter-spacing: -.02em; }
+div.card > div.card-body { color: #241e41 !important; padding: 18px 20px !important; }
+div.card div.card { background: rgba(255,255,255,.49) !important; box-shadow: none !important; border-color: rgba(80,48,149,.13) !important; border-radius: 13px !important; }
+div.card div.card > .card-header { background: rgba(93,53,186,.06) !important; padding: 12px 15px !important; }
+div.card div.card > .card-body { padding: 0 !important; }
+div.card .card-footer { background: rgba(255,255,255,.2) !important; border-top: 1px solid rgba(35,22,85,.1) !important; }
+
+/* 06 — TABLAS. Mantiene scrolling solo donde ya exista .table-responsive */
+div.content-wrapper .table,
+body.dark-mode div.content-wrapper .table { color: #211a40 !important; background: transparent !important; margin-bottom: 0; }
+div.content-wrapper .table th {
+  color: #5a537b !important; background: rgba(64,35,142,.07) !important;
+  border-top: 0 !important; border-bottom: 1px solid rgba(55,39,102,.17) !important;
+  font-size: 11px; font-weight: 850; letter-spacing: .07em;
+  text-transform: uppercase; padding: 15px 13px !important;
+}
+div.content-wrapper .table td,
+body.dark-mode div.content-wrapper .table td {
+  color: #292345 !important;
+  border-top: 1px solid rgba(55,39,102,.1) !important;
+  padding: 14px 13px !important; vertical-align: middle !important;
+}
+div.content-wrapper .table-hover tbody tr:hover,
+body.dark-mode div.content-wrapper .table-hover tbody tr:hover {
+  background: rgba(108,65,221,.1) !important; color: #201a3e !important;
+}
+div.content-wrapper .table-responsive { -webkit-overflow-scrolling: touch; }
+
+/* 07 — BOTONES. No estilizar 'button' globalmente (afectaría close / widgets). */
+div.content-wrapper .btn,
+div.content-wrapper a.btn,
+div.content-wrapper button.btn {
+  border: 1px solid transparent !important;
+  border-radius: 10px !important; font-weight: 750 !important;
+  box-shadow: none !important; text-decoration: none !important;
+  transition: filter .16s ease, transform .16s ease !important;
+}
+div.content-wrapper .btn-info,
+div.content-wrapper .btn-primary {
+  background: #5335d2 !important; color: #fff !important;
+}
+div.content-wrapper .btn-success {
+  background: #006b82 !important; color: #fff !important;
+}
+div.content-wrapper .btn-warning { background: #edba58 !important; color: #29202a !important; }
+div.content-wrapper .btn-danger { background: #ba355e !important; color: #fff !important; }
+div.content-wrapper .btn-secondary,
+div.content-wrapper .btn-default { background: #e5def6 !important; color: #38295c !important; }
+div.content-wrapper .btn:not([disabled]):hover { filter: brightness(1.09); }
+div.content-wrapper .btn:focus-visible,
+div.content-wrapper a:focus-visible,
+div.content-wrapper .form-control:focus-visible { outline: 3px solid #11aabb !important; outline-offset: 2px; }
+
+/* 08 — FORMULARIOS (incluye tus select / input) */
+div.content-wrapper input.form-control,
+div.content-wrapper input.form-control.float-right,
+div.content-wrapper select.form-control,
+div.content-wrapper select.form-control.float-left,
+div.content-wrapper textarea.form-control,
+body.dark-mode div.content-wrapper .form-control {
+  background: rgba(255,255,255,.77) !important;
+  color: #201a3e !important;
+  border: 1px solid rgba(92,65,145,.26) !important;
+  border-radius: 11px !important;
+  box-shadow: none !important;
+  min-height: 40px;
+}
+div.content-wrapper .form-control:focus { border-color: #7650db !important; box-shadow: 0 0 0 3px rgba(116,78,217,.14) !important; }
+div.content-wrapper .form-control::placeholder { color: #837a9c !important; }
+div.content-wrapper label { color: #342953 !important; font-weight: 700; }
+div.content-wrapper .input-group-text,
+div.content-wrapper .custom-select { background: rgba(255,255,255,.86) !important; color: #382857 !important; border-color: rgba(92,65,145,.20) !important; border-radius: 10px !important; }
+
+/* 09 — AVISOS Y DESPLEGABLES */
+div.content-wrapper .alert {
+  background: rgba(255,245,212,.88) !important; color: #624b24 !important;
+  border: 1px solid rgba(180,124,32,.22) !important;
+  border-left: 4px solid #e6ab3b !important;
+  border-radius: 12px !important; box-shadow: none !important;
+}
+div.content-wrapper .alert * { color: inherit !important; }
+div.content-wrapper .alert-danger { background: rgba(255,229,233,.94) !important; border-left-color: #ca456a !important; color: #7f2841 !important; }
+div.content-wrapper .alert-success { background: rgba(219,251,245,.94) !important; border-left-color: #159f8d !important; color: #176c60 !important; }
+.dropdown-menu { background: #fff !important; color: #211b3f !important; border: 1px solid #e5def1 !important; border-radius: 13px !important; box-shadow: 0 16px 42px rgba(25,15,60,.18) !important; }
+.dropdown-menu .dropdown-item { color: #2a214a !important; }
+.dropdown-menu .dropdown-item:hover { background: #f0edfc !important; }
+.modal-content { background: #faf9ff !important; color: #201b3d !important; border-radius: 18px !important; border: 1px solid #e2ddec !important; }
+.modal-header,.modal-footer { border-color: #e3ddef !important; }
+
+/* 10 — MÓVIL Y TABLETA. Se conserva el mecanismo de sidebar de AdminLTE */
+@media (max-width: 991.98px) {
+  div.content-wrapper > div.content-header,
+  div.content-wrapper > section.content { padding-left: 8px !important; padding-right: 8px !important; }
+  div.card > div.card-body { padding: 13px !important; }
+  div.content-wrapper .table { font-size: 12px; }
+}
+@media (max-width: 767.98px) {
+  div.content-wrapper { background-attachment: scroll !important; }
+  div.content-header { padding-top: 14px !important; }
+  div.content-header h1 { font-size: 27px !important; }
+  div.content-header > div.container-fluid::after { font-size: 10px; line-height: 1.5; border-radius: 12px; }
+  div.info-box { min-height: 104px !important; border-radius: 14px !important; padding: 10px !important; margin-bottom: 12px !important; }
+  div.info-box > span.info-box-icon { width: 44px !important; min-width: 44px !important; height: 52px !important; font-size: 19px !important; border-radius: 10px !important; }
+  div.info-box .info-box-content { padding-left: 9px !important; }
+  div.info-box .info-box-text { font-size: 11px !important; }
+  div.info-box .info-box-number { font-size: 24px !important; }
+  div.card, div.card.card-default { border-radius: 15px !important; margin-bottom: 14px !important; }
+  div.card > div.card-header { padding: 14px !important; }
+  div.card > div.card-body { padding: 11px !important; }
+  div.card div.card > .card-header { padding: 11px !important; }
+  div.content-wrapper .table th,div.content-wrapper .table td { white-space: nowrap; padding: 10px 11px !important; }
+  div.content-wrapper .table-responsive { overflow-x: auto !important; }
+  div.content-wrapper .btn { min-height: 34px; }
+}
+/* Dos KPIs por fila desde 360 a 575 px, sin modificar las funciones */
+@media (min-width: 360px) and (max-width: 575.98px) {
+  div.content-wrapper .row > .col-12.col-sm-6.col-md-3 { flex: 0 0 50% !important; max-width: 50% !important; padding-left: 6px !important; padding-right: 6px !important; }
+  div.info-box > span.info-box-icon { width: 36px !important; min-width: 36px !important; height: 43px !important; font-size: 16px !important; }
+  div.info-box { min-height: 95px !important; padding: 8px !important; }
+  div.info-box .info-box-text { font-size: 10px !important; }
+  div.info-box .info-box-number { font-size: 22px !important; }
+}
+@media (max-width: 359.98px) {
+  div.content-header > div.container-fluid::after { letter-spacing: 0; }
+  div.info-box { min-height: 85px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  div.info-box, aside.main-sidebar .nav-sidebar .nav-link,div.content-wrapper .btn { transition: none !important; }
+  div.info-box:hover { transform: none !important; }
+}
+
+/* 11 — RETOQUES DE INTEGRACIÓN */
+footer.main-footer {
+  background: #17152f !important;
+  border-top: 1px solid rgba(255,255,255,.12) !important;
+  color: #bebbdc !important;
+  padding: 14px 20px !important;
+  font-size: 12px;
+}
+footer.main-footer a, footer.main-footer strong { color: #eef0ff !important; }
+div.content-wrapper .table.text-nowrap td,
+div.content-wrapper .table.text-nowrap th { white-space: nowrap !important; }
+div.content-wrapper .table-responsive::-webkit-scrollbar { height: 7px; }
+div.content-wrapper .table-responsive::-webkit-scrollbar-track { background: rgba(85,60,147,.06); }
+div.content-wrapper .table-responsive::-webkit-scrollbar-thumb { background: rgba(73,48,138,.30); border-radius: 9px; }
+@media (max-width: 767.98px) {
+  div.info-box, div.card, div.card.card-default {
+    backdrop-filter: blur(10px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(120%) !important;
+  }
+  footer.main-footer { padding: 14px !important; font-size: 11px; }
+}
+
+
+
+/* ========================================================================
+   ARGON • ATLAS / LAUNCHPAD v4
+   Navigation app-grid: not AdminLTE nav-pills. Preserves link destinations.
+   Layout repair: the sidebar owns a bounded viewport and an independent
+   vertical scroll zone. Compatible with OverlayScrollbars when enabled.
+   ======================================================================== */
+:root {
+  --ax-aside: 276px;
+  --ax-bg: #10141f;
+  --ax-surface: #1b2432;
+  --ax-border: rgba(210,231,240,.12);
+  --ax-text: #eef4f2;
+  --ax-muted: #aab7c5;
+  --ax-accent: #c5f36d;
+}
+/* Consistent style regardless of Toggle Theme / dark-mode setting. */
+html body,
+html body.dark-mode,
+html body:not(.dark-mode) { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif !important; background: #121522 !important; }
+html body .main-header.navbar,
+html body.dark-mode .main-header.navbar,
+html body .main-header.navbar-light,
+html body .main-header.navbar-dark {
+  background: #121922 !important;
+  border-color: rgba(229,242,244,.12) !important;
+}
+html body .main-header.navbar .nav-link { color: #f2f5f7 !important; }
+html body .content-wrapper,
+html body.dark-mode .content-wrapper,
+html body:not(.dark-mode) .content-wrapper {
+  background-color: #11162c !important;
+  background-image:
+    radial-gradient(ellipse 69% 65% at 93% 8%, rgba(10,185,197,.47),transparent 74%),
+    radial-gradient(ellipse 65% 65% at 0% 15%, rgba(194,51,158,.42),transparent 78%),
+    linear-gradient(132deg,#3e286e 0%,#262352 48%,#11546a 100%) !important;
+}
+/* Fixed-height shell. This replaces AdminLTE's height:calc(100% - ...)
+   assumption, which became invalid when the brand grew in previous CSS. */
+html body aside.main-sidebar,
+html body aside.main-sidebar.sidebar-dark-primary,
+html body aside.main-sidebar.sidebar-light-primary {
+  width: var(--ax-aside) !important;
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  position: fixed !important;
+  top: 0 !important;
+  bottom: auto !important;
+  left: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  background: var(--ax-bg) !important;
+  background-image: linear-gradient(155deg,#1b2632 0%,#121826 46%,#0d121b 100%) !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(197,243,109,.17) !important;
+  box-shadow: 15px 0 32px rgba(9,10,20,.27) !important;
+  color: var(--ax-text) !important;
+}
+/* Short wordmark band, no tall masthead eating into the scroll area. */
+html body aside.main-sidebar > a.brand-link {
+  flex: 0 0 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  width: 100% !important;
+  padding: 12px 17px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  border-bottom: 1px solid var(--ax-border) !important;
+  background: #151d2a !important;
+  box-shadow: none !important;
+  text-align: left !important;
+  overflow: hidden !important;
+}
+html body aside.main-sidebar > a.brand-link .brand-image {
+  display: block !important;
+  flex: 0 1 auto !important;
+  float: none !important;
+  width: auto !important;
+  max-width: 157px !important;
+  max-height: 42px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+}
+html body aside.main-sidebar > a.brand-link::after {
+  content: ' / CONTROL';
+  display: block;
+  color: var(--ax-accent);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .16em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+/* Critical scrolling repair. The menu always has remaining viewport space.
+   Its lower end remains scrollable, including safe-area/navigation-bar padding. */
+html body aside.main-sidebar > .sidebar {
+  box-sizing: border-box !important;
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  max-height: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 10px 12px calc(32px + env(safe-area-inset-bottom, 0px)) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin;
+  scrollbar-color: #64758a transparent;
+}
+/* OverlayScrollbars can wrap the sidebar; keep its own scrolling viewport. */
+html body aside.main-sidebar > .sidebar.os-host { overflow: hidden !important; }
+html body aside.main-sidebar > .sidebar.os-host .os-padding,
+html body aside.main-sidebar > .sidebar.os-host .os-viewport { max-height: 100% !important; }
+html body aside.main-sidebar > .sidebar.os-host .os-viewport {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html body aside.main-sidebar > .sidebar.os-host .os-content {
+  padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px)) !important;
+}
+html body aside.main-sidebar > .sidebar::-webkit-scrollbar { width: 5px; }
+html body aside.main-sidebar > .sidebar::-webkit-scrollbar-thumb { background: #4a586c; border-radius: 10px; }
+/* Compact account strip, less like standard AdminLTE profile. */
+html body aside.main-sidebar div.user-panel,
+html body aside.main-sidebar div.user-panel.d-flex {
+  display: grid !important;
+  grid-template-columns: 32px minmax(0,1fr) !important;
+  align-items: start !important;
+  gap: 9px !important;
+  margin: 0 0 12px !important;
+  padding: 8px 7px 12px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--ax-border) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+html body aside.main-sidebar .user-panel .image { padding: 0 !important; margin: 0 !important; }
+html body aside.main-sidebar .user-panel .image img {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 2px !important;
+  background: #252d3e !important;
+  border: 1px solid rgba(197,243,109,.45) !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .user-panel .info { min-width: 0 !important; padding: 0 !important; overflow: visible !important; white-space: normal !important; }
+html body aside.main-sidebar .user-panel .info > a.d-block {
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  line-height: 1.45 !important;
+  color: #f6f9ff !important;
+  text-decoration: none !important;
+  overflow-wrap: anywhere !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type {
+  color: var(--ax-accent) !important;
+  font-size: 11px !important;
+  font-weight: 750 !important;
+}
+/* The original bank balance is later replaced visually by the support information block. */
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type { display: none !important; }
+html body aside.main-sidebar .user-panel a.btn-danger.btn-xs {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 6px 0 0 !important;
+  padding: 5px 9px !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  font-weight: 750 !important;
+  letter-spacing: .08em !important;
+  color: #b6c4cc !important;
+  border: 1px solid #344252 !important;
+  background: #1a2530 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar .user-panel a.btn-danger.btn-xs:hover { color: #fff !important; background: #30394b !important; }
+html body aside.main-sidebar .sidebar > nav { margin: 0 !important; padding: 0 !important; }
+/* THE NEW LAYOUT: every group is a two-column launchpad grid. */
+html body aside.main-sidebar ul.nav.nav-sidebar {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  gap: 7px !important;
+  align-content: start !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  background: transparent !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-header {
+  grid-column: 1 / -1 !important;
+  margin: 13px 2px 0 !important;
+  padding: 0 0 4px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: .19em !important;
+  line-height: 1.6 !important;
+  color: #879ca6 !important;
+  border-bottom: 1px solid rgba(206,228,229,.08);
+  background: transparent !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+/* Bigger home tile, visually different from admin sidebar menu. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item:first-child { grid-column: 1 / -1 !important; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: 81px !important;
+  min-height: 81px !important;
+  margin: 0 !important;
+  padding: 11px 10px 10px !important;
+  overflow: hidden !important;
+  background: #1e2937 !important;
+  background-image: linear-gradient(155deg,rgba(255,255,255,.032),rgba(255,255,255,0)) !important;
+  color: #e5eef2 !important;
+  border: 1px solid rgba(204,224,231,.11) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  transition: background .13s ease, border-color .13s ease, transform .13s ease !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link > .nav-icon,
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link > .iconify { display: none !important; }
+/* A deliberately new numbered navigation language, not the old icons. */
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link::before {
+  content: '↗';
+  display: block;
+  width: 100%;
+  line-height: 1.1;
+  font-size: 20px;
+  font-weight: 850;
+  color: #a9baca;
+  letter-spacing: -.05em;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href='/']::before { content: '◈'; color: var(--ax-accent); }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/create-line']::before { content: '＋'; color: #78dce8; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/lines']::before { content: '▤'; color: #78dce8; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/create-template']::before { content: '◇'; color: #c8a3ff; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/templates']::before { content: '▧'; color: #c8a3ff; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/create-subreseller']::before { content: '⊕'; color: #facb89; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/subresellers']::before { content: '◎'; color: #facb89; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/logs']::before { content: '≡'; color: #abccf5; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/custom-dns']::before { content: '⌘'; color: #abccf5; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link[href$='/delete-expired']::before { content: '⌫'; color: #ffadac; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link p {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  font-size: 11px !important;
+  line-height: 1.22 !important;
+  font-weight: 750 !important;
+  letter-spacing: -.012em !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  color: inherit !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item:first-child > a.nav-link {
+  min-height: 65px !important;
+  height: 65px !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  padding: 12px 15px !important;
+  background: linear-gradient(100deg,#2b3a39,#1e3036) !important;
+  border-color: rgba(197,243,109,.24) !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item:first-child > a.nav-link::before { width: auto; font-size: 23px; }
+html body aside.main-sidebar .nav-sidebar .nav-item:first-child > a.nav-link p { font-size: 13px !important; }
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link:hover,
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link:focus-visible {
+  background: #304052 !important;
+  border-color: rgba(197,243,109,.65) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link.active {
+  background: #32432f !important;
+  border-color: rgba(197,243,109,.8) !important;
+  color: #f5ffe0 !important;
+}
+html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link:focus-visible { outline: 2px solid var(--ax-accent) !important; outline-offset: 2px !important; }
+/* A wide, distinguishable cleanup tile; no renaming of the operation. */
+html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired'] { background: #34272f !important; border-color: rgba(255,143,144,.25) !important; }
+@supports selector(li:has(> a)) {
+  html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a.nav-link[href$='/delete-expired']) { grid-column: 1 / -1 !important; }
+  html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired'] {
+    height: 60px !important;
+    min-height: 60px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 15px !important;
+  }
+  html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired']::before { width: auto !important; font-size: 24px !important; }
+  html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired'] p { font-size: 12px !important; }
+  /* Hide the *parent* tile, avoiding an empty slot. */
+  html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href$='/toggle-theme']) { display: none !important; }
+}
+/* Extra fallback for browsers without :has. */
+html body aside.main-sidebar a.nav-link[href$='/toggle-theme'] { display: none !important; }
+/* No footer help strip: assistance now lives in the account area. */
+html body aside.main-sidebar .sidebar > nav::after { content: none !important; display: none !important; }
+
+/* Profile: visually reuse the bank-balance row as a SUPPORT information block.
+   This is NOT an HTML link and the original balance remains in the DOM.
+   Change the two content strings below to your real public contact details.
+   Never put a private API key in CSS. */
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  padding: 10px 11px !important;
+  margin: 9px 0 4px !important;
+  border: 1px solid rgba(197,243,109,.28) !important;
+  border-left: 3px solid var(--ax-accent, #c5f36d) !important;
+  border-radius: 8px !important;
+  background: rgba(197,243,109,.065) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type .nav-icon {
+  display: none !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type::before {
+  content: 'SUPPORT / REQUESTS';
+  display: block;
+  color: var(--ax-accent, #c5f36d) !important;
+  font-size: 10px !important;
+  line-height: 1.35 !important;
+  font-weight: 800 !important;
+  letter-spacing: .075em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 4px !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:last-of-type::after {
+  content: 'Credits · Assistance';
+  display: block;
+  color: #d8e5ed !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  font-weight: 550 !important;
+  letter-spacing: 0 !important;
+}
+/* Ensure the old theme action has no clickable surface or grid gap. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href$='/toggle-theme'] { display: none !important; }
+@supports selector(li:has(> a)) {
+  html body aside.main-sidebar li.nav-item:has(> a[href$='/toggle-theme']) { display: none !important; }
+}
+/* Preserve AdminLTE's fold/collapse mechanics in desktop. */
+@media (min-width: 992px) {
+  html body:not(.sidebar-collapse) .main-header,
+  html body:not(.sidebar-collapse) .content-wrapper,
+  html body:not(.sidebar-collapse) .main-footer { margin-left: var(--ax-aside) !important; }
+  html body.sidebar-mini.sidebar-collapse .main-header,
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-footer { margin-left: 4.6rem !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) { width: 4.6rem !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) > a.brand-link { padding: 9px 8px !important; justify-content: center !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) > a.brand-link::after { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) > a.brand-link .brand-image { max-width: 43px !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .user-panel,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar > li.nav-header,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .sidebar > nav::after { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) ul.nav.nav-sidebar { display: flex !important; flex-direction: column !important; gap: 6px !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > a.nav-link { width: 50px !important; height: 50px !important; min-height: 50px !important; padding: 7px !important; display: grid !important; place-items: center !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > a.nav-link p { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(.sidebar-focused):not(:hover) .nav-sidebar .nav-item > a.nav-link::before { font-size: 21px !important; width: auto !important; }
+}
+/* On mobile use the same bounded menu height, preserve pushmenu and overlays. */
+@media (max-width: 991.98px) {
+  html body aside.main-sidebar,
+  html body aside.main-sidebar.sidebar-dark-primary,
+  html body aside.main-sidebar.sidebar-light-primary {
+    width: min(84vw, 306px) !important;
+    max-width: calc(100vw - 38px) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    transform: translateX(-110%);
+  }
+  html body.sidebar-open aside.main-sidebar { transform: translateX(0) !important; }
+  html body:not(.sidebar-open) aside.main-sidebar { transform: translateX(-110%) !important; }
+  html body .main-header, html body .content-wrapper, html body .main-footer { margin-left: 0 !important; }
+  html body aside.main-sidebar > a.brand-link { flex-basis: 62px !important; min-height: 62px !important; max-height: 62px !important; }
+  html body aside.main-sidebar > a.brand-link .brand-image { max-width: 130px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link { height: 76px !important; min-height: 76px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item:first-child > a.nav-link { height: 60px !important; min-height: 60px !important; }
+  html body aside.main-sidebar .sidebar > nav::after { margin-bottom: 0 !important; }
+}
+@media (max-width: 360px) {
+  html body aside.main-sidebar > .sidebar { padding-left: 9px !important; padding-right: 9px !important; }
+  html body aside.main-sidebar ul.nav.nav-sidebar { gap: 6px !important; }
+  html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link { padding: 9px 8px !important; }
+  html body aside.main-sidebar > a.brand-link::after { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body aside.main-sidebar .nav-sidebar .nav-item > a.nav-link { transition: none !important; }
+}
+
+/* Prevent long tables from widening the whole dashboard on small screens. */
+@media (max-width: 767.98px) {
+  html body .content-wrapper,
+  html body .content-wrapper .container-fluid,
+  html body .content-wrapper section.content,
+  html body .content-wrapper .col-md-4,
+  html body .content-wrapper .col-md-8 {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  html body .content-wrapper .row > .col-md-4,
+  html body .content-wrapper .row > .col-md-8 {
+    flex: 0 0 100% !important;
+  }
+  html body .content-wrapper .table-responsive {
+    display: block !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
