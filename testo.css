@@ -1,4 +1,3 @@
-
 :root {
   --au-ink: #1b1734;
   --au-muted: #625e82;
@@ -978,5 +977,366 @@ html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired']:ho
   html body aside.main-sidebar .nav-sidebar a.nav-link[href$='/delete-expired'] {
     height: 76px !important;
     min-height: 76px !important;
+  }
+}
+/* =====================================================================
+   ARGON ATLAS v7 / ACCOUNT ALWAYS VISIBLE
+   The sidebar scroll position persisted when the drawer was reopened,
+   scrolling the username and credit balance underneath the brand band.
+   Keep the existing user account anchored to the top of the menu viewport.
+   ===================================================================== */
+
+/* Works with native sidebar scrolling and OverlayScrollbars' inner viewport. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 12 !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  padding: 12px 11px 11px !important;
+  background: #1e2835 !important;
+  border: 1px solid rgba(194,213,228,.20) !important;
+  box-shadow: 0 8px 24px rgba(5,12,22,.28) !important;
+  isolation: isolate !important;
+}
+/* Prevent inherited display/visibility rules from hiding primary identity. */
+html body aside.main-sidebar .sidebar .user-panel .info > a.d-block:first-child {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  color: #f7f9fb !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  font-weight: 750 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:first-of-type {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  color: #c5f36d !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  font-weight: 750 !important;
+  font-variant-numeric: tabular-nums;
+}
+/* Contact is secondary, located BELOW identity and credits. */
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:last-of-type {
+  margin-top: 12px !important;
+  padding: 10px 11px !important;
+  background: rgba(197,243,109,.06) !important;
+  border: 1px solid rgba(197,243,109,.19) !important;
+  border-left: 3px solid #c5f36d !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > a.btn-danger.btn-xs {
+  margin-top: 8px !important;
+}
+/* Keep the scrolling surface accessible and the bottom option reachable. */
+html body aside.main-sidebar > .sidebar {
+  scroll-padding-top: 170px !important;
+}
+html body aside.main-sidebar > .sidebar.os-host .os-viewport {
+  scroll-padding-top: 170px !important;
+}
+
+
+/* =====================================================================
+   ARGON ATLAS v8 — MOBILE USABILITY FIX
+   Extiende v7. Soluciona formularios, filtros, tablas y DNS.
+   Cambios exclusivamente visuales; NO cambia destinos ni API.
+   ===================================================================== */
+
+/* CONTENEDORES: que ningún flex/grid/card empuje el viewport */
+html body .content-wrapper .container-fluid,
+html body .content-wrapper .row,
+html body .content-wrapper .row > [class*="col-"],
+html body .content-wrapper .card,
+html body .content-wrapper .card-body,
+html body .content-wrapper .card-header,
+html body .content-wrapper form,
+html body .content-wrapper .form-group {
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+html body .content-wrapper .card .card-title,
+html body .content-wrapper .card-header h1,
+html body .content-wrapper .card-header h2,
+html body .content-wrapper .card-header h3 {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+}
+
+/* BOTONES: tipografía coherente, contenidos que no se amontonan. */
+html body .content-wrapper :is(a.btn,button.btn,input.btn,.btn) {
+  box-sizing: border-box !important;
+  min-height: 34px !important;
+  max-width: 100% !important;
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  border-radius: 9px !important;
+  letter-spacing: 0 !important;
+  white-space: normal !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  overflow-wrap: break-word !important;
+}
+html body .content-wrapper .btn.btn-sm,
+html body .content-wrapper .btn.btn-xs {
+  min-height: 30px !important;
+  padding: 5px 9px !important;
+  font-size: 12px !important;
+}
+html body .content-wrapper .btn i,
+html body .content-wrapper .btn .iconify {
+  font-size: 1em !important;
+}
+/* Grupo de filtros y acciones: mantiene los eventos originales. */
+html body .content-wrapper :is(.btn-group,.btn-toolbar) {
+  flex-wrap: wrap !important;
+  max-width: 100% !important;
+  column-gap: 5px !important;
+  row-gap: 5px !important;
+}
+html body .content-wrapper .btn-group > .btn {
+  flex: 0 1 auto !important;
+  border-radius: 9px !important;
+  margin-left: 0 !important;
+}
+
+/* TARJETAS INTERIORES Y FORMULARIOS: reemplaza el antiguo padding:0. */
+html body .content-wrapper div.card div.card > div.card-body,
+html body .content-wrapper div.card div.card div.card-body {
+  padding: 16px !important;
+}
+html body .content-wrapper div.card div.card > div.card-header {
+  padding: 12px 16px !important;
+}
+html body .content-wrapper div.card .card-body form {
+  max-width: 100% !important;
+}
+html body .content-wrapper .form-group {
+  margin-bottom: 14px !important;
+}
+html body .content-wrapper label {
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+  display: inline-block;
+  margin-bottom: 6px !important;
+}
+html body .content-wrapper :is(input.form-control,select.form-control,textarea.form-control,.custom-select) {
+  display: block;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  padding: 8px 11px !important;
+}
+html body .content-wrapper textarea.form-control { min-height: 92px !important; }
+html body .content-wrapper .input-group { min-width: 0 !important; max-width: 100% !important; flex-wrap: nowrap !important; }
+html body .content-wrapper .input-group > .form-control { min-width: 0 !important; flex: 1 1 0% !important; width: 1% !important; }
+html body .content-wrapper .input-group > .input-group-append,
+html body .content-wrapper .input-group > .input-group-prepend { flex-shrink: 0 !important; }
+
+/* TABLAS: limitar scroll a la tabla, no a toda la pantalla. */
+html body .content-wrapper div.table-responsive,
+html body .content-wrapper .card-body.table-responsive,
+html body .content-wrapper .card-body:has(> table.table) {
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overscroll-behavior-x: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html body .content-wrapper .table-responsive > .table,
+html body .content-wrapper .card-body > table.table {
+  width: max-content !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  table-layout: auto !important;
+  margin: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+html body .content-wrapper .table th,
+html body .content-wrapper .table td {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  padding: 9px 10px !important;
+  vertical-align: top !important;
+  white-space: nowrap !important;
+}
+/* Tablas de lines con muchas columnas; los campos no quedan recortados por el viewport. */
+html body .content-wrapper .table:has(thead tr > th:nth-child(7)) { min-width: 780px !important; }
+/* Campos largos tipo JSON en Logs: salto de línea dentro de la celda. */
+html body .content-wrapper .table td:has(> pre),
+html body .content-wrapper .table td:has(> code),
+html body .content-wrapper .table td > :is(pre,code) {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  max-width: 280px !important;
+}
+html body .content-wrapper .table td > pre { margin: 0 !important; font-size: 11px !important; }
+
+/* HIDE DNS HOW-TO: solo si hay señales inequívocas de pantalla de DNS.
+   No ocultamos .alert-warning globalmente (podría contener errores importantes).
+   Si ArgonTV renombra los campos/clases, se necesita el HTML de /custom-dns. */
+@supports selector(.card:has(input)) {
+  html body .content-wrapper .card:has(input[name*="subdomain" i]) :is(.alert-warning,.callout-warning),
+  html body .content-wrapper .card:has(input[id*="subdomain" i]) :is(.alert-warning,.callout-warning),
+  html body .content-wrapper .card:has(select option[value*="ottb.xyz" i]) :is(.alert-warning,.callout-warning),
+  html body .content-wrapper .card:has(select[name*="domain" i]) :is(.alert-warning,.callout-warning) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Tarjetas de ancho útil: 0 desbordamiento horizontal del viewport */
+  html body .content-wrapper { overflow-x: clip !important; padding-bottom: 20px !important; }
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 7px !important; padding-right: 7px !important; }
+  html body .content-wrapper .container-fluid { padding-left: 6px !important; padding-right: 6px !important; }
+  html body .content-wrapper .row { margin-left: -6px !important; margin-right: -6px !important; }
+  html body .content-wrapper .row > [class*="col-"] { padding-left: 6px !important; padding-right: 6px !important; }
+  html body .content-wrapper div.card > div.card-header { padding: 12px 14px !important; }
+  html body .content-wrapper div.card > div.card-body { padding: 12px !important; }
+  html body .content-wrapper div.card div.card > div.card-header { padding: 11px 13px !important; }
+  html body .content-wrapper div.card div.card > div.card-body,
+  html body .content-wrapper div.card div.card div.card-body { padding: 13px !important; }
+  html body .content-wrapper div.card .card-title { font-size: 17px !important; line-height: 1.3 !important; }
+  html body .content-wrapper h4 { font-size: 17px !important; }
+  html body .content-wrapper h5 { font-size: 15px !important; }
+
+  /* Botoneras en filtros de logs / editor de plantillas */
+  html body .content-wrapper :is(a.btn,button.btn,input.btn,.btn) {
+    padding: 7px 10px !important;
+    min-height: 34px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 8px !important;
+  }
+  html body .content-wrapper .card-header :is(.btn,.btn-group),
+  html body .content-wrapper .card-body :is(.btn,.btn-group) { margin-bottom: 4px; }
+  html body .content-wrapper .card .btn:not(.btn-block) { width: auto !important; }
+  html body .content-wrapper .btn.btn-block { width: 100% !important; }
+  html body .content-wrapper .btn-group .btn { margin-bottom: 0 !important; }
+  /* Filter containers (Bootstrap rows/float right) must not overlap the title */
+  html body .content-wrapper .card-header .float-right,
+  html body .content-wrapper .card-header .float-left {
+    float: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin: 9px 0 0 !important;
+  }
+  html body .content-wrapper .card-header .float-right > .form-control,
+  html body .content-wrapper .card-header .float-left > .form-control { flex: 1 1 130px !important; width: auto !important; }
+  html body .content-wrapper .card-header .card-tools { float: none !important; margin: 9px 0 0 !important; display: flex !important; flex-wrap: wrap !important; gap: 6px !important; width: 100% !important; }
+  html body .content-wrapper .card-header .card-title { float: none !important; display: block !important; }
+
+  /* Los filtros avanzados no deben forzar anchos superiores a la tarjeta */
+  html body .content-wrapper .input-group { max-width: 100% !important; }
+  html body .content-wrapper select.form-control.float-left,
+  html body .content-wrapper input.form-control.float-right { float: none !important; }
+
+  /* Tablas legibles con scroll horizontal deliberado dentro de la tarjeta */
+  html body .content-wrapper .table th,
+  html body .content-wrapper .table td { font-size: 11px !important; padding: 8px 8px !important; }
+  html body .content-wrapper .table-responsive { border-radius: 10px; }
+  html body .content-wrapper .table-responsive::before,
+  html body .content-wrapper .card-body.table-responsive::before {
+    content: '← SWIPE TABLE TO SEE MORE →';
+    display: block;
+    position: sticky;
+    left: 0;
+    width: fit-content;
+    padding: 5px 10px 5px 8px;
+    color: #625b85;
+    font-size: 10px;
+    letter-spacing: .05em;
+    font-weight: 700;
+    background: transparent;
+  }
+  /* El pie fijo de AdminLTE ocultaba la última fila de formularios y alertas */
+  html body.layout-footer-fixed .wrapper .main-footer,
+  html body.layout-footer-fixed .main-footer {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    margin-left: 0 !important;
+    clear: both !important;
+  }
+  html body .content-wrapper .alert { font-size: 13px !important; line-height: 1.5 !important; padding: 12px !important; overflow-wrap: anywhere !important; }
+}
+
+/* Input groups: preserve the Bootstrap horizontal row (DNS / mass actions).
+   Crucial if an older style sheet overwrites flex layout. */
+html body .content-wrapper .input-group {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+html body .content-wrapper .input-group > input.form-control,
+html body .content-wrapper .input-group > select.form-control {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 0 !important;
+}
+html body .content-wrapper .input-group > :is(.input-group-append,.input-group-prepend) {
+  display: flex !important;
+  align-items: stretch !important;
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  max-width: 47% !important;
+}
+html body .content-wrapper .input-group > :is(.input-group-append,.input-group-prepend) > select.form-control,
+html body .content-wrapper .input-group > :is(.input-group-append,.input-group-prepend) > .custom-select {
+  display: block !important;
+  width: auto !important;
+  min-width: 85px !important;
+  max-width: 100% !important;
+}
+/* Final descriptive column such as an audit JSON is allowed to wrap. */
+html body .content-wrapper .table td:last-child:not(:has(.btn)) {
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+  max-width: 260px !important;
+}
+
+/* Search + Sort controls in Manage Lines: paired fields and actions. */
+@media (max-width: 767.98px) {
+  html body .content-wrapper .card-header .card-tools:has(> input.form-control):has(> select.form-control) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 7px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  html body .content-wrapper .card-header .card-tools:has(> input.form-control):has(> select.form-control) > :is(input.form-control,select.form-control) {
+    display: block !important;
+    grid-column: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+  html body .content-wrapper .card-header .card-tools:has(> input.form-control):has(> select.form-control) > .btn {
+    grid-column: 2 !important;
+    margin: 0 !important;
+    width: auto !important;
   }
 }
