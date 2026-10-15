@@ -39,22 +39,7 @@ html body .content-wrapper .container-fluid {
 html body .content-wrapper .row { min-width: 0 !important; }
 html body .content-wrapper .row > [class*="col-"] { min-width: 0 !important; }
 html body .content-header h1 { color: #fff !important; font-size: clamp(24px,2.15vw,35px) !important; font-weight: 760 !important; letter-spacing: -.035em !important; }
-html body .content-header > .container-fluid::after {
-  content: 'HELP CENTER / REQUESTS & SUPPORT';
-  display: inline-block !important;
-  max-width: 100% !important;
-  margin-top: 12px !important;
-  padding: 9px 15px !important;
-  color: #fff !important;
-  background: rgba(16,21,49,.43) !important;
-  border: 1px solid rgba(234,235,255,.33) !important;
-  border-radius: 999px !important;
-  font-size: 11px !important;
-  line-height: 1.4 !important;
-  font-weight: 700 !important;
-  letter-spacing: .045em !important;
-  white-space: normal !important;
-}
+html body .content-header > .container-fluid::after { content: none !important; display: none !important; }
 
 /* TOP BAR */
 html body .main-header.navbar {
@@ -145,7 +130,7 @@ html body aside.main-sidebar .sidebar .user-panel.d-flex {
   border-radius: 14px !important;
   box-shadow: 0 8px 20px rgba(5,11,22,.22) !important;
   overflow: visible !important;
-  z-index: 40 !important;
+  z-index: 1 !important;
   isolation: isolate !important;
 }
 html body aside.main-sidebar .user-panel .image {
@@ -207,35 +192,35 @@ html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type {
   line-height: 1.5 !important;
   overflow-wrap: anywhere !important;
 }
-/* Keep the existing credits / account text visible; do not replace it with a fake banner. */
+/* Keep the REAL bank balance visible; do not replace account data with a fake banner. */
 html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) {
   display: block !important;
   visibility: visible !important;
-  position: static !important;
-  box-sizing: border-box !important;
+  position: relative !important;
   width: 100% !important;
   height: auto !important;
-  padding: 8px 10px !important;
-  margin: 8px 0 0 !important;
+  min-height: 36px !important;
+  box-sizing: border-box !important;
+  padding: 9px 10px !important;
+  margin: 0 !important;
   border-radius: 9px !important;
-  border: 1px solid rgba(201,231,188,.18) !important;
+  border: 1px solid rgba(201,231,188,.22) !important;
   border-left: 3px solid var(--atlas-lime) !important;
-  color: #d2dce5 !important;
+  color: #dce6ed !important;
   font-size: 12px !important;
-  line-height: 1.5 !important;
+  line-height: 1.45 !important;
   background: rgba(189,229,146,.055) !important;
   text-align: left !important;
-  overflow-wrap: anywhere !important;
+  white-space: normal !important;
 }
-html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2)::before,
-html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2)::after {
-  content: none !important;
-  display: none !important;
-}
-html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) .nav-icon {
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) .nav-icon,
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) svg {
   display: inline-block !important;
+  width: 1em !important;
+  height: 1em !important;
+  margin-right: 5px !important;
+  vertical-align: -0.12em !important;
 }
-
 html body aside.main-sidebar .user-panel .info > a.btn-danger.btn-xs {
   display: block !important;
   position: static !important;
@@ -306,26 +291,30 @@ html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link.active {
   border-color: rgba(195,234,122,.55) !important;
   color: #fff !important;
 }
-/* Use the original AdminLTE / Font Awesome icons instead of encoded text glyphs. */
 html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link > .nav-icon {
+  display: none !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link::before {
+  content: '\f015';
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Pro', sans-serif !important;
+  font-weight: 900 !important;
   display: block !important;
-  float: none !important;
-  width: 1.5rem !important;
-  margin: 0 0 6px !important;
-  padding: 0 !important;
-  font-family: "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome" !important;
-  font-size: 20px !important;
-  line-height: 1 !important;
-  text-align: left !important;
   color: var(--atlas-cyan) !important;
+  line-height: 1 !important;
+  font-size: 23px !important;
+  font-weight: 700 !important;
 }
-
-/* The home tile is horizontal, so its icon sits beside the label. */
-html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) > a > .nav-icon {
-  margin: 0 !important;
-  color: var(--atlas-lime) !important;
-}
-
+/* Attribute-qualified selectors match the base selector specificity. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/']::before { content: '\f015' !important; color: var(--atlas-lime) !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href*='create-line']::before { content: '+' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/lines']::before { content: '\f07c' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href*='create-template']::before { content: '\f015' !important; color: #ba9cef !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/templates']::before { content: '\f24d' !important; color: #ba9cef !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href*='create-subreseller']::before { content: '+' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/subresellers']::before { content: '\f0c0' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/logs']::before { content: '\f03a' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/custom-dns']::before { content: '\f013' !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link[href='/delete-expired']::before { content: '\f1f8' !important; color: #bdcbd6 !important; }
 html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p {
   display: block !important;
   position: static !important;
@@ -505,12 +494,46 @@ html body .content-wrapper .input-group .input-group-append > select { max-width
   html body .content-wrapper .table td { font-size: 14px !important; }
   html body .content-wrapper .form-control { font-size: 15px !important; }
 }
-/* When the built-in compact sidebar is active, avoid a clipped account card. */
+/* DESKTOP: keep the sidebar expanded even if AdminLTE toggles sidebar-collapse. */
 @media (min-width: 992px) {
-  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .user-panel { display: none !important; }
-  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar { display: block !important; }
-  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link { height: 52px !important; min-height: 52px !important; padding: 10px !important; justify-content: center !important; }
-  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link p { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:hover,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar.sidebar-focused {
+    width: 250px !important;
+    margin-left: 0 !important;
+  }
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-footer,
+  html body.sidebar-mini.sidebar-collapse .main-header {
+    margin-left: 250px !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link {
+    height: 86px !important;
+    min-height: 86px !important;
+    padding: 13px 11px !important;
+    justify-content: space-between !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) > a.nav-link {
+    height: 64px !important;
+    min-height: 64px !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-footer,
+  html body.sidebar-mini.sidebar-collapse .main-header {
+    transition: none !important;
+  }
 }
 
 /* TABLET */
@@ -527,7 +550,7 @@ html body .content-wrapper .input-group .input-group-append > select { max-width
   html body .content-wrapper .container-fluid { padding-left: 0 !important; padding-right: 0 !important; }
   html body .content-wrapper > .content-header { padding-top: 16px !important; padding-bottom: 10px !important; }
   html body .content-header h1 { font-size: 24px !important; }
-  html body .content-header > .container-fluid::after { padding: 8px 12px !important; font-size: 10px !important; }
+  html body .content-header > .container-fluid::after { content: none !important; display: none !important; }
   html body .content-wrapper .row > .col-12.col-sm-6.col-md-3 { flex: 0 0 50% !important; max-width: 50% !important; padding-left: 5px !important; padding-right: 5px !important; }
   html body .content-wrapper .info-box { padding: 10px !important; min-height: 96px !important; }
   html body .content-wrapper .info-box-icon { width: 36px !important; flex-basis: 36px !important; height: 40px !important; font-size: 17px !important; }
@@ -556,60 +579,4 @@ html body .content-wrapper .input-group .input-group-append > select { max-width
   html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type { padding-left: 42px !important; }
   html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p { font-size: 11px !important; }
   html body .content-wrapper .info-box-text { font-size: 11px !important; }
-}
-
-
-/* FINAL OVERRIDES: keep desktop sidebar permanently expanded; no hover-to-open. */
-@media (min-width: 992px) {
-  html body.sidebar-mini.sidebar-collapse .main-sidebar,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar:hover,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar.sidebar-focused {
-    width: 250px !important;
-    margin-left: 0 !important;
-  }
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .brand-text,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .user-panel,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .nav-sidebar > .nav-item > .nav-link p,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .nav-header,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .user-panel .info,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .brand-link > .brand-image {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: auto !important;
-  }
-  html body.sidebar-mini.sidebar-collapse .main-sidebar .nav-sidebar > .nav-item > .nav-link {
-    width: 100% !important;
-  }
-  html body.sidebar-mini.sidebar-collapse .content-wrapper,
-  html body.sidebar-mini.sidebar-collapse .main-header,
-  html body.sidebar-mini.sidebar-collapse .main-footer {
-    margin-left: 250px !important;
-  }
-  html body.sidebar-mini.sidebar-collapse .main-sidebar,
-  html body.sidebar-mini.sidebar-collapse .main-sidebar:hover {
-    transition: none !important;
-  }
-}
-
-/* Keep the account panel in normal document flow, below the logo and above navigation. */
-html body aside.main-sidebar > .sidebar .user-panel,
-html body aside.main-sidebar > .sidebar .user-panel.d-flex {
-  position: relative !important;
-  inset: auto !important;
-  float: none !important;
-  transform: none !important;
-  margin-top: 10px !important;
-  margin-bottom: 16px !important;
-  z-index: 1 !important;
-}
-html body aside.main-sidebar > .sidebar,
-html body aside.main-sidebar > .sidebar.os-host {
-  overflow-x: hidden !important;
-}
-html body aside.main-sidebar > .sidebar .user-panel .info > a.d-block:not(.btn),
-html body aside.main-sidebar > .sidebar .user-panel .info > span.d-block {
-  white-space: normal !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
 }
