@@ -1,0 +1,118 @@
+html body .content-wrapper .card-header .card-tools { flex-wrap: wrap !important; }
+
+/* Data tables: table scrolls independently, not the entire page. */
+html body .content-wrapper .table-responsive,
+html body .content-wrapper .card-body:has(> table.table) {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+html body .content-wrapper table.table {
+  width: 100% !important;
+  max-width: none !important;
+  color: #2c2640 !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+}
+html body .content-wrapper .table td,
+html body .content-wrapper .table th {
+  padding: 11px 12px !important;
+  border-color: rgba(74,57,123,.13) !important;
+  vertical-align: middle !important;
+}
+html body .content-wrapper .table th { font-size: 11px !important; letter-spacing: .05em !important; color: #575072 !important; }
+html body .content-wrapper .table td { word-break: normal !important; overflow-wrap: anywhere !important; }
+html body .content-wrapper .table-hover tbody tr:hover { background: rgba(95,61,192,.08) !important; color: #28213f !important; }
+html body .content-wrapper .table-responsive table.table { min-width: 660px !important; }
+html body .content-wrapper .card-body > table.table { min-width: 640px !important; }
+
+/* Keep DNS suffix selector attached to the subdomain field. */
+html body .content-wrapper .input-group { min-width: 0 !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) { display: flex !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) > input.form-control { width: 1% !important; min-width: 0 !important; flex: 1 1 auto !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) > .input-group-append { min-width: 0 !important; flex: 0 0 auto !important; max-width: 48% !important; }
+html body .content-wrapper .input-group .input-group-append > select { max-width: 100% !important; }
+/* Hide the optional Custom Domain field and its separate form only. */
+@supports selector(form:has(input)) {
+ html body .content-wrapper form:has(input[placeholder*='custom domain' i]):not(:has(input[name*='subdomain' i],input[id*='subdomain' i])),
+ html body .content-wrapper form:has(input[name='custom_domain' i]):not(:has(input[name*='subdomain' i],input[id*='subdomain' i])),
+ html body .content-wrapper .form-group:has(input[placeholder*='custom domain' i]),
+ html body .content-wrapper .form-group:has(input[name='custom_domain' i]) { display: none !important; }
+ html body .content-wrapper .card:has(input[name*='subdomain' i]) .alert-warning,
+ html body .content-wrapper .card:has(input[id*='subdomain' i]) .alert-warning,
+ html body .content-wrapper .card:has(input[name*='subdomain' i]) .callout-warning { display: none !important; }
+}
+
+/* DESKTOP: full-width content panels, normal-sized UI */
+@media (min-width: 992px) {
+  /* Preserve four KPI columns, never stack the fourth onto a new row. */
+  html body .content-wrapper .row > .col-12.col-sm-6.col-md-3 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 30px !important; padding-right: 30px !important; }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-']:has(> .card) {
+    flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important;
+  }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-'] > .card,
+  html body .content-wrapper .card > .card-body > .card { width: 100% !important; max-width: none !important; }
+  html body .content-wrapper .card-header .card-title { font-size: 21px !important; }
+  html body .content-wrapper .table td { font-size: 14px !important; }
+  html body .content-wrapper .form-control { font-size: 15px !important; }
+}
+/* When the built-in compact sidebar is active, avoid a clipped account card. */
+@media (min-width: 992px) {
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .user-panel { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar { display: block !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link { height: 52px !important; min-height: 52px !important; padding: 10px !important; justify-content: center !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link p { display: none !important; }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 18px !important; padding-right: 18px !important; }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-']:has(> .card) { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+
+/* MOBILE: two stats per row, wide cards, compact actions, natural footer. */
+@media (max-width: 767.98px) {
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 12px !important; padding-right: 12px !important; }
+  html body .content-wrapper .container-fluid { padding-left: 0 !important; padding-right: 0 !important; }
+  html body .content-wrapper > .content-header { padding-top: 16px !important; padding-bottom: 10px !important; }
+  html body .content-header h1 { font-size: 24px !important; }
+  html body .content-header > .container-fluid::after { padding: 8px 12px !important; font-size: 10px !important; }
+  html body .content-wrapper .row > .col-12.col-sm-6.col-md-3 { flex: 0 0 50% !important; max-width: 50% !important; padding-left: 5px !important; padding-right: 5px !important; }
+  html body .content-wrapper .info-box { padding: 10px !important; min-height: 96px !important; }
+  html body .content-wrapper .info-box-icon { width: 36px !important; flex-basis: 36px !important; height: 40px !important; font-size: 17px !important; }
+  html body .content-wrapper .info-box-content { padding-left: 7px !important; }
+  html body .content-wrapper .info-box-number { font-size: 23px !important; }
+  html body .content-wrapper .card { border-radius: 17px !important; }
+  html body .content-wrapper .card > .card-header { padding: 13px 14px !important; }
+  html body .content-wrapper .card > .card-body { padding: 14px !important; }
+  html body .content-wrapper .card .card > .card-header { padding: 12px 13px !important; }
+  html body .content-wrapper .card .card > .card-body { padding: 14px !important; }
+  html body .content-wrapper .card-header .card-title { font-size: 17px !important; }
+  html body .content-wrapper :is(.btn,a.btn,button.btn) { font-size: 12px !important; min-height: 32px !important; padding: 7px 10px !important; }
+  html body .content-wrapper .card-tools { float: none !important; margin-top: 10px !important; }
+  html body .content-wrapper .form-control { min-height: 39px !important; font-size: 14px !important; }
+  html body .content-wrapper .table-responsive table.table,
+  html body .content-wrapper .card-body > table.table { min-width: 590px !important; }
+  html body .content-wrapper table.table th,
+  html body .content-wrapper table.table td { padding: 9px 10px !important; font-size: 12px !important; }
+  html body.layout-footer-fixed .main-footer,
+  html body .main-footer { position: static !important; margin-bottom: 0 !important; }
+  html body aside.main-sidebar > .sidebar { padding: 8px 10px 26px !important; }
+  html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link { min-height: 77px !important; height: 77px !important; padding: 11px 9px !important; }
+}
+@media (max-width: 359.98px) {
+  html body aside.main-sidebar .user-panel .info > a.d-block:not(.btn),
+  html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type { padding-left: 42px !important; }
+  html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p { font-size: 11px !important; }
+  html body .content-wrapper .info-box-text { font-size: 11px !important; }
+}
+
