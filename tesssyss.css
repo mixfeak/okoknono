@@ -1116,3 +1116,157 @@ html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-ty
     z-index: 1050 !important;
   }
 }
+/* V9 FIX: compact account card, safely layered on the known-good V8 stylesheet.
+   Only affects the account panel inside the sidebar. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  box-sizing: border-box !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 8px 9px !important;
+  margin: 0 0 9px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+html body aside.main-sidebar .sidebar .user-panel > .image {
+  flex: 0 0 34px !important;
+  width: 34px !important;
+  min-width: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel > .image img {
+  display: block !important;
+  width: 34px !important;
+  height: 34px !important;
+  max-width: 34px !important;
+  object-fit: cover !important;
+}
+
+html body aside.main-sidebar .sidebar .user-panel > .info {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto auto !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+  row-gap: 3px !important;
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  overflow: hidden !important;
+}
+
+/* Account name occupies its own compact first row. */
+html body aside.main-sidebar .sidebar .user-panel > .info > a.d-block:not(.btn) {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+  display: block !important;
+  min-width: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* The first span is the live credit amount. Add a label without altering its value. */
+html body aside.main-sidebar .sidebar .user-panel > .info > span.d-block:first-of-type {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  display: block !important;
+  min-width: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--atlas-lime, #c3ea7a) !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+}
+html body aside.main-sidebar .sidebar .user-panel > .info > span.d-block:first-of-type::before {
+  content: "Credits: " !important;
+  color: #d9e2ed !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+}
+
+/* Bank balance row: fully removed so it consumes no space. */
+html body aside.main-sidebar .sidebar .user-panel > .info > span.d-block:nth-of-type(2) {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Logout shares the credits row instead of being a full-width button on a new line. */
+html body aside.main-sidebar .sidebar .user-panel > .info > a.btn-danger.btn-xs,
+html body aside.main-sidebar .sidebar .user-panel > .info > a.btn.btn-danger.btn-xs,
+html body aside.main-sidebar .sidebar .user-panel > .info > a.btn-xs {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  display: inline-flex !important;
+  align-self: center !important;
+  justify-self: end !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: static !important;
+  float: none !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 25px !important;
+  min-height: 25px !important;
+  margin: 0 !important;
+  padding: 3px 8px !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: #c8d0dd !important;
+  border: 1px solid rgba(218,230,245,.25) !important;
+  box-shadow: none !important;
+  font-size: 10px !important;
+  line-height: 1.1 !important;
+  font-weight: 650 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 767.98px) {
+  html body aside.main-sidebar .sidebar .user-panel,
+  html body aside.main-sidebar .sidebar .user-panel.d-flex {
+    gap: 8px !important;
+    padding: 7px 8px !important;
+    margin-bottom: 8px !important;
+  }
+  html body aside.main-sidebar .sidebar .user-panel > .image,
+  html body aside.main-sidebar .sidebar .user-panel > .image img {
+    flex-basis: 30px !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    height: 30px !important;
+    max-width: 30px !important;
+  }
+  html body aside.main-sidebar .sidebar .user-panel > .info > a.d-block:not(.btn) {
+    font-size: 11px !important;
+  }
+  html body aside.main-sidebar .sidebar .user-panel > .info > span.d-block:first-of-type {
+    font-size: 11px !important;
+  }
+}
+
