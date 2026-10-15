@@ -786,3 +786,147 @@ html body aside.main-sidebar .sidebar .user-panel {
     overflow-x: hidden !important;
   }
 }
+
+/* V5 — fix blank sidebar caused by AdminLTE + OverlayScrollbars sizing */
+@media (min-width: 992px) {
+  /* Keep the desktop sidebar permanently expanded, even if JS leaves sidebar-collapse on body. */
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:hover,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar.sidebar-focused {
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    margin-left: 0 !important;
+    transform: none !important;
+  }
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-header,
+  html body.sidebar-mini.sidebar-collapse .main-footer {
+    margin-left: 250px !important;
+  }
+  /* Sidebar starts directly under the logo. Do not let OverlayScrollbars' generated
+     glue element reserve a large blank region or push the account panel down. */
+  html body aside.main-sidebar > a.brand-link {
+    display: flex !important;
+    position: relative !important;
+    flex: 0 0 58px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+  html body aside.main-sidebar > .sidebar.os-host,
+  html body aside.main-sidebar > .sidebar {
+    position: absolute !important;
+    top: 58px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+  html body aside.main-sidebar .sidebar.os-host > .os-content-glue,
+  html body aside.main-sidebar .sidebar.os-host > .os-resize-observer-host,
+  html body aside.main-sidebar .sidebar.os-host > .os-size-auto-observer {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  html body aside.main-sidebar .sidebar.os-host > .os-padding {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  html body aside.main-sidebar .sidebar.os-host > .os-padding > .os-viewport {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  html body aside.main-sidebar .sidebar.os-host .os-content {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 10px 12px 28px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+  }
+  /* Account panel must be the first item in normal document flow, not pinned to the bottom. */
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel,
+  html body aside.main-sidebar .sidebar .user-panel {
+    display: flex !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    order: 0 !important;
+    float: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 14px !important;
+    padding: 8px 8px 12px !important;
+    transform: none !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info > a,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info > span,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p {
+    display: block !important;
+    position: static !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    overflow: visible !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 77px !important;
+    justify-content: flex-start !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar *,
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-header,
+  html body.sidebar-mini.sidebar-collapse .main-footer {
+    transition: none !important;
+  }
+}
