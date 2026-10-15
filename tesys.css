@@ -1,9 +1,3 @@
-/*
- ARGON ATLAS v11 | Responsive rebuild for AdminLTE 3
- REPLACE the previous stylesheet. Do not append this to v10.
- All injected UI copy is English.
- This stylesheet never changes destinations, account data or application logic.
-*/
 :root {
   --atlas-bg: #101729;
   --atlas-sidebar: #101925;
@@ -1056,5 +1050,63 @@ html body aside.main-sidebar .sidebar .user-panel {
     visibility: visible !important;
     opacity: 1 !important;
     overflow: visible !important;
+  }
+}
+
+/* v7: hide the bank balance only; keep the live credits line visible. */
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-type(2),
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-type(2)::before,
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-type(2)::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+
+/* V8: desktop collapse should behave like the mobile off-canvas menu: hide the
+   entire sidebar, do not reveal it on hover, and leave the header toggle visible. */
+@media (min-width: 768px) {
+  html body.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-collapse aside.main-sidebar:hover,
+  html body.sidebar-collapse aside.main-sidebar.sidebar-focused,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:hover,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar.sidebar-focused {
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    margin-left: 0 !important;
+    transform: translateX(-100%) !important;
+    left: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    transition: none !important;
+  }
+
+  html body.sidebar-collapse .content-wrapper,
+  html body.sidebar-collapse .main-header,
+  html body.sidebar-collapse .main-footer,
+  html body.sidebar-mini.sidebar-collapse .content-wrapper,
+  html body.sidebar-mini.sidebar-collapse .main-header,
+  html body.sidebar-mini.sidebar-collapse .main-footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+    transition: none !important;
+  }
+
+  /* Keep the navbar toggle available and clickable while the sidebar is hidden. */
+  html body .main-header .nav-link[data-widget="pushmenu"],
+  html body .main-header [data-widget="pushmenu"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1050 !important;
   }
 }
