@@ -1,3 +1,9 @@
+/*
+ ARGON ATLAS v11 | Responsive rebuild for AdminLTE 3
+ REPLACE the previous stylesheet. Do not append this to v10.
+ All injected UI copy is English.
+ This stylesheet never changes destinations, account data or application logic.
+*/
 :root {
   --atlas-bg: #101729;
   --atlas-sidebar: #101925;
@@ -1108,5 +1114,122 @@ html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-ty
     pointer-events: auto !important;
     position: relative !important;
     z-index: 1050 !important;
+  }
+}
+
+
+/* V9: compact account card — preserve dynamic account name and credit value. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  box-sizing: border-box !important;
+  padding: 9px 10px !important;
+  margin: 0 0 10px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 2 !important;
+}
+
+html body aside.main-sidebar .sidebar .user-panel .image {
+  position: static !important;
+  flex: 0 0 34px !important;
+  width: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .image img {
+  width: 34px !important;
+  height: 34px !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+  row-gap: 2px !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > a.d-block:not(.btn) {
+  grid-column: 1 / -1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  line-height: 1.25 !important;
+  font-size: 12px !important;
+  overflow-wrap: anywhere !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:first-of-type {
+  grid-column: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  color: var(--atlas-lime, #c7f36b) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:first-of-type::before {
+  content: 'Credits: ' !important;
+  color: #d9e2ed !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+}
+html body aside.main-sidebar .sidebar .user-panel .info > a.btn-danger.btn-xs,
+html body aside.main-sidebar .sidebar .user-panel .info > a.btn-xs {
+  display: inline-flex !important;
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: static !important;
+  float: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 26px !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 4px 8px !important;
+  border: 1px solid rgba(218,230,245,.25) !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: #c8d0dd !important;
+  box-shadow: none !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  font-weight: 650 !important;
+  white-space: nowrap !important;
+}
+/* Bank balance stays hidden; do not reserve space for it. */
+html body aside.main-sidebar .sidebar .user-panel .info > span.d-block:nth-of-type(2) {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+@media (max-width: 767.98px) {
+  html body aside.main-sidebar .sidebar .user-panel,
+  html body aside.main-sidebar .sidebar .user-panel.d-flex {
+    padding: 8px 9px !important;
+    margin-bottom: 9px !important;
+    gap: 8px !important;
+  }
+  html body aside.main-sidebar .sidebar .user-panel .image,
+  html body aside.main-sidebar .sidebar .user-panel .image img {
+    width: 32px !important;
+    height: 32px !important;
+    flex-basis: 32px !important;
   }
 }
