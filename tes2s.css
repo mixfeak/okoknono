@@ -1,0 +1,88 @@
+/* Argon Atlas v13 hotfix — load AFTER tst-v12.css */
+
+/* Keep account visible but make room for it inside the sidebar flow.
+   Undo the fixed overlay and the artificial nav offset that covered menu items. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 2 !important;
+  display: flex !important;
+  width: auto !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 10px 10px 12px !important;
+  padding: 12px !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+html body aside.main-sidebar > .sidebar > nav,
+html body aside.main-sidebar > .sidebar .os-content > nav {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+html body aside.main-sidebar .sidebar.os-host .os-content {
+  padding-top: 0 !important;
+}
+/* Ensure sidebar links are not hidden behind the profile. */
+html body aside.main-sidebar .nav-sidebar,
+html body aside.main-sidebar .nav-sidebar > .nav-item {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Restore the icon fonts used by AdminLTE / Font Awesome. The v12 icon-button
+   magnifier remains scoped to the Lines search button only. */
+html body aside.main-sidebar .nav-sidebar .nav-icon,
+html body aside.main-sidebar .nav-sidebar .nav-icon::before,
+html body aside.main-sidebar .brand-link .brand-image,
+html body aside.main-sidebar .user-panel .image i,
+html body aside.main-sidebar .user-panel .info i {
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome" !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  speak: never;
+}
+html body aside.main-sidebar .nav-sidebar .nav-icon {
+  display: inline-block !important;
+  width: 1.6rem !important;
+  min-width: 1.6rem !important;
+  text-align: center !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+/* Do not replace or inject characters into menu labels or icons. */
+html body aside.main-sidebar .nav-sidebar .nav-icon::after,
+html body aside.main-sidebar .nav-sidebar .nav-link::before,
+html body aside.main-sidebar .nav-sidebar .nav-item::before {
+  content: none !important;
+}
+
+/* Desktop: give Lines filters comfortable widths again. Mobile remains compact. */
+@media (min-width: 768px) {
+  html body .content-wrapper .card-header:has(.card-tools input[placeholder*='search' i]) .card-tools {
+    grid-template-columns: minmax(180px, 1fr) 42px minmax(180px, 260px) 42px !important;
+    max-width: 760px !important;
+    gap: 8px !important;
+  }
+  html body .content-wrapper .card-header:has(.card-tools input[placeholder*='search' i]) .card-tools > :is(input.form-control, select.form-control) {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    font-size: 14px !important;
+    padding: 6px 11px !important;
+  }
+  html body .content-wrapper .card-header:has(.card-tools input[placeholder*='search' i]) .card-tools > button.btn {
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+  }
+}
