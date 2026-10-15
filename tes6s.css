@@ -1,0 +1,566 @@
+/*
+ ARGON ATLAS v11 | Responsive rebuild for AdminLTE 3
+ REPLACE the previous stylesheet. Do not append this to v10.
+ All injected UI copy is English.
+ This stylesheet never changes destinations, account data or application logic.
+*/
+:root {
+  --atlas-bg: #101729;
+  --atlas-sidebar: #101925;
+  --atlas-panel: rgba(249,249,255,.88);
+  --atlas-ink: #272342;
+  --atlas-line: rgba(57,50,99,.14);
+  --atlas-purple: #5739ce;
+  --atlas-lime: #c3ea7a;
+  --atlas-cyan: #79d4ea;
+  --atlas-edge: rgba(214,229,240,.16);
+}
+html, body { min-width: 0 !important; }
+body, body.dark-mode { font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important; }
+
+/* MAIN CANVAS: fixed background, flexible document height */
+html body div.content-wrapper {
+  min-width: 0 !important;
+  width: auto !important;
+  min-height: calc(100vh - 56px) !important;
+  min-height: calc(100dvh - 56px) !important;
+  padding-bottom: 28px !important;
+  background: radial-gradient(ellipse at 8% 0%,rgba(172,47,155,.50),transparent 49%),
+              radial-gradient(ellipse at 100% 5%,rgba(12,169,193,.55),transparent 53%),
+              linear-gradient(145deg,#3c275f 0%,#232547 56%,#103850 100%) !important;
+  color: #f9fbff !important;
+}
+html body .content-wrapper > .content-header,
+html body .content-wrapper > section.content { padding: 0 22px !important; width: 100% !important; }
+html body .content-wrapper > .content-header { padding-top: 24px !important; padding-bottom: 14px !important; }
+html body .content-wrapper .container-fluid {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 8px !important;
+}
+html body .content-wrapper .row { min-width: 0 !important; }
+html body .content-wrapper .row > [class*="col-"] { min-width: 0 !important; }
+html body .content-header h1 { color: #fff !important; font-size: clamp(24px,2.15vw,35px) !important; font-weight: 760 !important; letter-spacing: -.035em !important; }
+html body .content-header > .container-fluid::after {
+  content: 'HELP CENTER / REQUESTS & SUPPORT';
+  display: inline-block !important;
+  max-width: 100% !important;
+  margin-top: 12px !important;
+  padding: 9px 15px !important;
+  color: #fff !important;
+  background: rgba(16,21,49,.43) !important;
+  border: 1px solid rgba(234,235,255,.33) !important;
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+  letter-spacing: .045em !important;
+  white-space: normal !important;
+}
+
+/* TOP BAR */
+html body .main-header.navbar {
+  background: #101924 !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  min-height: 58px !important;
+  box-shadow: none !important;
+}
+html body .main-header.navbar .nav-link { color: #eff4ff !important; }
+
+/* SIDEBAR: do not set height:0 or place the account behind the brand */
+html body aside.main-sidebar {
+  background: var(--atlas-sidebar) !important;
+  background-image: linear-gradient(160deg,#15202d 0%,#101622 74%) !important;
+  border-right: 1px solid var(--atlas-edge) !important;
+  box-shadow: 14px 0 38px rgba(8,13,31,.22) !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+}
+html body aside.main-sidebar > a.brand-link {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex: none !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  margin: 0 !important;
+  padding: 9px 16px !important;
+  background: #16202d !important;
+  border-bottom: 1px solid var(--atlas-edge) !important;
+  text-align: center !important;
+}
+html body aside.main-sidebar > a.brand-link::after { display: none !important; content: none !important; }
+html body aside.main-sidebar .brand-image {
+  display: block !important;
+  float: none !important;
+  height: auto !important;
+  max-height: 48px !important;
+  max-width: 86% !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  box-shadow: none !important;
+}
+html body aside.main-sidebar > .sidebar {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  height: calc(100vh - 68px) !important;
+  height: calc(100dvh - 68px) !important;
+  max-height: calc(100dvh - 68px) !important;
+  min-height: 180px !important;
+  padding: 10px 12px 32px !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #546478 transparent;
+}
+/* OverlayScrollbars is optional. Avoid changing its internal layout algorithm. */
+html body aside.main-sidebar > .sidebar.os-host { overflow: hidden !important; }
+html body aside.main-sidebar > .sidebar.os-host > .os-padding,
+html body aside.main-sidebar > .sidebar.os-host > .os-padding > .os-viewport { height: 100% !important; max-height: 100% !important; }
+html body aside.main-sidebar > .sidebar.os-host .os-viewport { overflow-y: auto !important; }
+html body aside.main-sidebar > .sidebar.os-host .os-content { padding-bottom: 36px !important; }
+
+/* ACCOUNT: identity and live credit balance come from existing HTML. */
+html body aside.main-sidebar .sidebar .user-panel,
+html body aside.main-sidebar .sidebar .user-panel.d-flex {
+  box-sizing: border-box !important;
+  display: block !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 15px 13px 12px !important;
+  margin: 0 0 16px !important;
+  background: #202c3b !important;
+  border: 1px solid rgba(224,240,255,.21) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 20px rgba(5,11,22,.22) !important;
+  overflow: visible !important;
+  z-index: 40 !important;
+  isolation: isolate !important;
+}
+html body aside.main-sidebar .user-panel .image {
+  display: block !important;
+  position: absolute !important;
+  top: 15px !important;
+  left: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body aside.main-sidebar .user-panel .image img {
+  display: block !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: #273447 !important;
+  border: 1px solid rgba(195,234,122,.50) !important;
+}
+html body aside.main-sidebar .user-panel .info {
+  display: block !important;
+  position: static !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .user-panel .info > a.d-block:not(.btn) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0 0 0 46px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere !important;
+  text-decoration: none !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 3px 0 0 46px !important;
+  margin: 0 0 12px !important;
+  color: var(--atlas-lime) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+/* Keep the existing credits / account text visible; do not replace it with a fake banner. */
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) {
+  display: block !important;
+  visibility: visible !important;
+  position: static !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 8px 10px !important;
+  margin: 8px 0 0 !important;
+  border-radius: 9px !important;
+  border: 1px solid rgba(201,231,188,.18) !important;
+  border-left: 3px solid var(--atlas-lime) !important;
+  color: #d2dce5 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  background: rgba(189,229,146,.055) !important;
+  text-align: left !important;
+  overflow-wrap: anywhere !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2)::before,
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2)::after {
+  content: none !important;
+  display: none !important;
+}
+html body aside.main-sidebar .user-panel .info > span.d-block:nth-of-type(2) .nav-icon {
+  display: inline-block !important;
+}
+
+html body aside.main-sidebar .user-panel .info > a.btn-danger.btn-xs {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  visibility: visible !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 10px 0 0 auto !important;
+  padding: 5px 9px !important;
+  background: transparent !important;
+  color: #c8d0dd !important;
+  border: 1px solid rgba(218,230,245,.22) !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  text-transform: none !important;
+  text-align: center !important;
+}
+
+/* NAVIGATION: two-column launcher with its own original links. */
+html body aside.main-sidebar .sidebar > nav,
+html body aside.main-sidebar .sidebar .os-content > nav { margin: 0 !important; padding: 0 0 26px !important; }
+html body aside.main-sidebar .nav-sidebar {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item,
+html body aside.main-sidebar .nav-sidebar > li.nav-header { min-width: 0 !important; width: auto !important; margin: 0 !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-header {
+  grid-column: 1 / -1 !important;
+  padding: 15px 4px 4px !important;
+  margin-top: 4px !important;
+  border-bottom: 1px solid rgba(224,240,255,.13) !important;
+  color: #94a5b5 !important;
+  letter-spacing: .15em !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link {
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: 86px !important;
+  min-height: 86px !important;
+  padding: 13px 11px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(211,223,240,.13) !important;
+  border-radius: 12px !important;
+  background: #243142 !important;
+  color: #eaf1f8 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link:hover,
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link.active {
+  background: #2b413f !important;
+  border-color: rgba(195,234,122,.55) !important;
+  color: #fff !important;
+}
+/* Use the original AdminLTE / Font Awesome icons instead of encoded text glyphs. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link > .nav-icon {
+  display: block !important;
+  float: none !important;
+  width: 1.5rem !important;
+  margin: 0 0 6px !important;
+  padding: 0 !important;
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome" !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  text-align: left !important;
+  color: var(--atlas-cyan) !important;
+}
+
+/* The home tile is horizontal, so its icon sits beside the label. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) > a > .nav-icon {
+  margin: 0 !important;
+  color: var(--atlas-lime) !important;
+}
+
+html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: inherit !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  font-weight: 720 !important;
+  overflow-wrap: anywhere !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) { grid-column: 1 / -1 !important; }
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) > a {
+  height: 64px !important; min-height: 64px !important;
+  flex-direction: row !important; align-items: center !important;
+  justify-content: flex-start !important; gap: 13px !important;
+}
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/']) > a p { width: auto !important; font-size: 14px !important; }
+/* Deletion is an ordinary tile, not an oversized danger action. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/delete-expired']) { grid-column: auto !important; }
+/* Theme switch cannot be re-targeted by CSS; hide it instead. */
+html body aside.main-sidebar .nav-sidebar > li.nav-item:has(> a[href='/toggle-theme']),
+html body aside.main-sidebar a[href='/toggle-theme'] { display: none !important; }
+
+/* CONTENT CARDS */
+html body .content-wrapper .card,
+html body.dark-mode .content-wrapper .card {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: var(--atlas-panel) !important;
+  border: 1px solid rgba(255,255,255,.72) !important;
+  border-radius: 21px !important;
+  color: var(--atlas-ink) !important;
+  box-shadow: 0 13px 35px rgba(14,14,45,.13) !important;
+  overflow: hidden !important;
+}
+html body .content-wrapper .card > .card-header {
+  background: rgba(244,242,252,.35) !important;
+  color: #28213f !important;
+  border-bottom: 1px solid rgba(41,28,100,.11) !important;
+  padding: 17px 22px !important;
+  min-width: 0 !important;
+}
+html body .content-wrapper .card-header .card-title { color: #27213c !important; font-weight: 780 !important; font-size: 20px !important; }
+html body .content-wrapper .card > .card-body {
+  padding: 20px 22px !important;
+  min-width: 0 !important;
+  color: #28213f !important;
+}
+html body .content-wrapper .card .card { background: rgba(255,255,255,.75) !important; border-color: rgba(71,43,135,.11) !important; box-shadow: none !important; border-radius: 14px !important; }
+html body .content-wrapper .card .card > .card-header { padding: 13px 17px !important; }
+html body .content-wrapper .card .card > .card-body { padding: 18px !important; }
+html body .content-wrapper .card h1,
+html body .content-wrapper .card h2,
+html body .content-wrapper .card h3,
+html body .content-wrapper .card label { color: #30294c !important; }
+html body .content-wrapper .info-box {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 106px !important;
+  display: flex !important;
+  align-items: center !important;
+  background: rgba(248,249,254,.84) !important;
+  color: #26203f !important;
+  border: 1px solid rgba(255,255,255,.65) !important;
+  border-radius: 18px !important;
+  padding: 13px !important;
+  box-shadow: 0 11px 22px rgba(15,20,51,.12) !important;
+}
+html body .content-wrapper .info-box-icon { flex: 0 0 51px !important; width: 51px !important; height: 58px !important; border-radius: 12px !important; background: #e3ddf9 !important; color: #523ac5 !important; font-size: 22px !important; }
+html body .content-wrapper .info-box-content { min-width: 0 !important; padding-left: 12px !important; }
+html body .content-wrapper .info-box-text { color: #635b7c !important; white-space: normal !important; font-size: 12px !important; }
+html body .content-wrapper .info-box-number { color: #292440 !important; font-weight: 790 !important; font-size: 29px !important; }
+
+/* Buttons, inputs and filters: legible on desktop, compact on mobile */
+html body .content-wrapper :is(a.btn, button.btn, input.btn, .btn) {
+  width: auto;
+  max-width: 100% !important;
+  min-height: 35px !important;
+  padding: 8px 13px !important;
+  font-size: 13px !important;
+  font-weight: 680 !important;
+  line-height: 1.3 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  vertical-align: middle !important;
+}
+html body .content-wrapper :is(.btn-primary,.btn-info,.btn-success) { background: var(--atlas-purple) !important; border-color: var(--atlas-purple) !important; color: #fff !important; }
+html body .content-wrapper .btn-sm { min-height: 30px !important; padding: 6px 9px !important; font-size: 12px !important; }
+html body .content-wrapper .btn-xs { min-height: 27px !important; padding: 4px 7px !important; font-size: 11px !important; }
+html body .content-wrapper .form-control,
+html body .content-wrapper .custom-select,
+html body .content-wrapper .select2-selection {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  min-height: 40px !important;
+  background: rgba(255,255,255,.9) !important;
+  color: #2b2841 !important;
+  border: 1px solid #d0cadb !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+}
+html body .content-wrapper .form-control:focus { border-color: #8d71d4 !important; box-shadow: 0 0 0 2px rgba(87,57,206,.12) !important; }
+html body .content-wrapper textarea.form-control { min-height: 85px !important; }
+html body .content-wrapper .form-group { min-width: 0 !important; margin-bottom: 15px !important; }
+html body .content-wrapper .card-header .card-tools { max-width: 100% !important; }
+html body .content-wrapper .card-header .card-tools .btn { margin-bottom: 4px !important; }
+html body .content-wrapper .card-header .btn-group,
+html body .content-wrapper .card-header .card-tools { flex-wrap: wrap !important; }
+
+/* Data tables: table scrolls independently, not the entire page. */
+html body .content-wrapper .table-responsive,
+html body .content-wrapper .card-body:has(> table.table) {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+html body .content-wrapper table.table {
+  width: 100% !important;
+  max-width: none !important;
+  color: #2c2640 !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+}
+html body .content-wrapper .table td,
+html body .content-wrapper .table th {
+  padding: 11px 12px !important;
+  border-color: rgba(74,57,123,.13) !important;
+  vertical-align: middle !important;
+}
+html body .content-wrapper .table th { font-size: 11px !important; letter-spacing: .05em !important; color: #575072 !important; }
+html body .content-wrapper .table td { word-break: normal !important; overflow-wrap: anywhere !important; }
+html body .content-wrapper .table-hover tbody tr:hover { background: rgba(95,61,192,.08) !important; color: #28213f !important; }
+html body .content-wrapper .table-responsive table.table { min-width: 660px !important; }
+html body .content-wrapper .card-body > table.table { min-width: 640px !important; }
+
+/* Keep DNS suffix selector attached to the subdomain field. */
+html body .content-wrapper .input-group { min-width: 0 !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) { display: flex !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) > input.form-control { width: 1% !important; min-width: 0 !important; flex: 1 1 auto !important; }
+html body .content-wrapper .input-group:has(> .input-group-append) > .input-group-append { min-width: 0 !important; flex: 0 0 auto !important; max-width: 48% !important; }
+html body .content-wrapper .input-group .input-group-append > select { max-width: 100% !important; }
+/* Hide the optional Custom Domain field and its separate form only. */
+@supports selector(form:has(input)) {
+ html body .content-wrapper form:has(input[placeholder*='custom domain' i]):not(:has(input[name*='subdomain' i],input[id*='subdomain' i])),
+ html body .content-wrapper form:has(input[name='custom_domain' i]):not(:has(input[name*='subdomain' i],input[id*='subdomain' i])),
+ html body .content-wrapper .form-group:has(input[placeholder*='custom domain' i]),
+ html body .content-wrapper .form-group:has(input[name='custom_domain' i]) { display: none !important; }
+ html body .content-wrapper .card:has(input[name*='subdomain' i]) .alert-warning,
+ html body .content-wrapper .card:has(input[id*='subdomain' i]) .alert-warning,
+ html body .content-wrapper .card:has(input[name*='subdomain' i]) .callout-warning { display: none !important; }
+}
+
+/* DESKTOP: full-width content panels, normal-sized UI */
+@media (min-width: 992px) {
+  /* Preserve four KPI columns, never stack the fourth onto a new row. */
+  html body .content-wrapper .row > .col-12.col-sm-6.col-md-3 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 30px !important; padding-right: 30px !important; }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-']:has(> .card) {
+    flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important;
+  }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-'] > .card,
+  html body .content-wrapper .card > .card-body > .card { width: 100% !important; max-width: none !important; }
+  html body .content-wrapper .card-header .card-title { font-size: 21px !important; }
+  html body .content-wrapper .table td { font-size: 14px !important; }
+  html body .content-wrapper .form-control { font-size: 15px !important; }
+}
+/* When the built-in compact sidebar is active, avoid a clipped account card. */
+@media (min-width: 992px) {
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .user-panel { display: none !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar { display: block !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link { height: 52px !important; min-height: 52px !important; padding: 10px !important; justify-content: center !important; }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .nav-sidebar > li.nav-item > a.nav-link p { display: none !important; }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 18px !important; padding-right: 18px !important; }
+  html body .content-wrapper > section.content > .container-fluid > .row > [class*='col-']:has(> .card) { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+
+/* MOBILE: two stats per row, wide cards, compact actions, natural footer. */
+@media (max-width: 767.98px) {
+  html body .content-wrapper > .content-header,
+  html body .content-wrapper > section.content { padding-left: 12px !important; padding-right: 12px !important; }
+  html body .content-wrapper .container-fluid { padding-left: 0 !important; padding-right: 0 !important; }
+  html body .content-wrapper > .content-header { padding-top: 16px !important; padding-bottom: 10px !important; }
+  html body .content-header h1 { font-size: 24px !important; }
+  html body .content-header > .container-fluid::after { padding: 8px 12px !important; font-size: 10px !important; }
+  html body .content-wrapper .row > .col-12.col-sm-6.col-md-3 { flex: 0 0 50% !important; max-width: 50% !important; padding-left: 5px !important; padding-right: 5px !important; }
+  html body .content-wrapper .info-box { padding: 10px !important; min-height: 96px !important; }
+  html body .content-wrapper .info-box-icon { width: 36px !important; flex-basis: 36px !important; height: 40px !important; font-size: 17px !important; }
+  html body .content-wrapper .info-box-content { padding-left: 7px !important; }
+  html body .content-wrapper .info-box-number { font-size: 23px !important; }
+  html body .content-wrapper .card { border-radius: 17px !important; }
+  html body .content-wrapper .card > .card-header { padding: 13px 14px !important; }
+  html body .content-wrapper .card > .card-body { padding: 14px !important; }
+  html body .content-wrapper .card .card > .card-header { padding: 12px 13px !important; }
+  html body .content-wrapper .card .card > .card-body { padding: 14px !important; }
+  html body .content-wrapper .card-header .card-title { font-size: 17px !important; }
+  html body .content-wrapper :is(.btn,a.btn,button.btn) { font-size: 12px !important; min-height: 32px !important; padding: 7px 10px !important; }
+  html body .content-wrapper .card-tools { float: none !important; margin-top: 10px !important; }
+  html body .content-wrapper .form-control { min-height: 39px !important; font-size: 14px !important; }
+  html body .content-wrapper .table-responsive table.table,
+  html body .content-wrapper .card-body > table.table { min-width: 590px !important; }
+  html body .content-wrapper table.table th,
+  html body .content-wrapper table.table td { padding: 9px 10px !important; font-size: 12px !important; }
+  html body.layout-footer-fixed .main-footer,
+  html body .main-footer { position: static !important; margin-bottom: 0 !important; }
+  html body aside.main-sidebar > .sidebar { padding: 8px 10px 26px !important; }
+  html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link { min-height: 77px !important; height: 77px !important; padding: 11px 9px !important; }
+}
+@media (max-width: 359.98px) {
+  html body aside.main-sidebar .user-panel .info > a.d-block:not(.btn),
+  html body aside.main-sidebar .user-panel .info > span.d-block:first-of-type { padding-left: 42px !important; }
+  html body aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p { font-size: 11px !important; }
+  html body .content-wrapper .info-box-text { font-size: 11px !important; }
+}
+
