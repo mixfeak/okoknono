@@ -1,9 +1,3 @@
-/*
- ARGON ATLAS v11 | Responsive rebuild for AdminLTE 3
- REPLACE the previous stylesheet. Do not append this to v10.
- All injected UI copy is English.
- This stylesheet never changes destinations, account data or application logic.
-*/
 :root {
   --atlas-bg: #101729;
   --atlas-sidebar: #101925;
