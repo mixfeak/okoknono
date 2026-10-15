@@ -930,3 +930,131 @@ html body aside.main-sidebar .sidebar .user-panel {
     transition: none !important;
   }
 }
+
+/* V6 MOBILE FIX: remove the empty reserved area inside the sidebar on phones.
+   Keep AdminLTE's normal off-canvas opening/closing behavior on small screens. */
+@media (max-width: 767.98px) {
+  html body aside.main-sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body aside.main-sidebar > a.brand-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    flex: 0 0 58px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    max-height: 58px !important;
+    margin: 0 !important;
+    padding: 4px 12px !important;
+    z-index: 2 !important;
+  }
+
+  html body aside.main-sidebar > a.brand-link .brand-image {
+    float: none !important;
+    display: block !important;
+    max-height: 46px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  html body aside.main-sidebar > .sidebar,
+  html body aside.main-sidebar > .sidebar.os-host {
+    display: block !important;
+    position: relative !important;
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  html body aside.main-sidebar .sidebar.os-host > .os-content-glue,
+  html body aside.main-sidebar .sidebar.os-host > .os-resize-observer-host,
+  html body aside.main-sidebar .sidebar.os-host > .os-size-auto-observer {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body aside.main-sidebar .sidebar.os-host > .os-padding {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body aside.main-sidebar .sidebar.os-host > .os-padding > .os-viewport {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html body aside.main-sidebar .sidebar.os-host .os-content {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 8px 10px 24px !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+  }
+
+  html body aside.main-sidebar .sidebar .user-panel,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .sidebar .user-panel,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .sidebar .user-panel.d-flex {
+    display: flex !important;
+    position: relative !important;
+    inset: auto !important;
+    order: 0 !important;
+    float: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 12px !important;
+    padding: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info > a,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .user-panel .info > span,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar .nav-sidebar > li.nav-item > a.nav-link p {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+}
