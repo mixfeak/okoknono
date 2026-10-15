@@ -725,3 +725,64 @@ html body aside.main-sidebar .sidebar .user-panel {
   margin-top: 0 !important;
   z-index: auto !important;
 }
+
+/* V4 FIX: AdminLTE's high-specificity collapsed-sidebar selectors were still
+   hiding the account panel and navigation when the pointer was not hovering. */
+@media (min-width: 992px) {
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .user-panel,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .user-panel.d-flex {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 16px !important;
+    overflow: visible !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .user-panel .info,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .user-panel .info > a,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .user-panel .info > span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    clip: auto !important;
+    overflow: visible !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .nav-sidebar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .nav-sidebar > li.nav-item > a.nav-link p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar .nav-sidebar > li.nav-item > a.nav-link {
+    width: 100% !important;
+    min-height: 77px !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    padding: 11px 9px !important;
+  }
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar,
+  html body.sidebar-mini.sidebar-collapse aside.main-sidebar:not(:hover):not(.sidebar-focused) .sidebar.os-host {
+    width: 100% !important;
+    height: calc(100vh - 68px) !important;
+    height: calc(100dvh - 68px) !important;
+    min-height: 0 !important;
+    padding-top: 10px !important;
+    overflow-x: hidden !important;
+  }
+}
